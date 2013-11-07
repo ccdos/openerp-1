@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+	<openerp>
+		<data noupdate="0">
+			<record model="ir.sequence.type" id="seq_type_res_partner">
+				<field name="name">Partner Sequence</field>
+				<field name="code">res.partner</field>
+			</record>
+			<record model="ir.sequence" id="seq_res_partner">
+				<field name="name">Partner Sequence</field>
+				<field name="code">res.partner</field>
+				<field name="prefix">P</field>
+				<field eval="5" name="padding"/>
+			</record>
+		</data>	
+	</openerp>
