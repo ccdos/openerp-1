@@ -29,7 +29,10 @@ class order(report_sxw.rml_parse):
         super(order, self).__init__(cr, uid, name, context=context)
         self.localcontext.update({'time': time})
 
-report_sxw.report_sxw('report.purchase.order','purchase.order','addons/purchase/report/order.rml',parser=order)
+report_sxw.report_sxw('report.purchase.order',
+                      'purchase.order',
+                      'addons/purchase/report/order.rml',
+                      parser=order,header='internal')
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
 
