@@ -3,7 +3,7 @@
     <data>
         <report auto="False" id="report_purchase_quotation" model="purchase.order" 
                 name="purchase.quotation" rml="purchase/report/request_quotation.rml"
-                string="Request for Quotation"/>
+                string="Purchase Order Resume"/>
         <report auto="False" id="report_purchase_order" model="purchase.order"
                 name="purchase.order" rml="purchase/report/order.rml"
                 usage="default" string="Purchase Order"/>

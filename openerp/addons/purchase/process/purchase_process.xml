@@ -43,7 +43,7 @@
             <field name="model_id" ref="purchase.model_purchase_order"/>
             <field eval="&quot;&quot;&quot;state&quot;&quot;&quot;" name="kind"/>
             <field eval="&quot;&quot;&quot;RFQ&quot;&quot;&quot;" name="name"/>
-            <field eval="&quot;&quot;&quot;Request for Quotations.&quot;&quot;&quot;" name="note"/>
+            <field eval="&quot;&quot;&quot;Purchase Order Resumes.&quot;&quot;&quot;" name="note"/>
             <field name="process_id" ref="process_process_purchaseprocess0"/>
             <field eval="&quot;&quot;&quot;object.state=='draft'&quot;&quot;&quot;" name="model_states"/>
             <field eval="0" name="flow_start"/>
@@ -54,7 +54,7 @@
             <field name="model_id" ref="purchase.model_purchase_order"/>
             <field eval="&quot;&quot;&quot;state&quot;&quot;&quot;" name="kind"/>
             <field eval="&quot;&quot;&quot;RFQ&quot;&quot;&quot;" name="name"/>
-            <field eval="&quot;&quot;&quot;Request for Quotations.&quot;&quot;&quot;" name="note"/>
+            <field eval="&quot;&quot;&quot;Purchase Order Resumes.&quot;&quot;&quot;" name="note"/>
             <field name="process_id" ref="process_process_purchaseprocess0"/>
             <field eval="&quot;&quot;&quot;object.state=='draft'&quot;&quot;&quot;" name="model_states"/>
             <field eval="1" name="flow_start"/>

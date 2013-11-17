@@ -444,7 +444,7 @@ msgstr ""
 #. module: purchase
 #: view:board.board:0
 #: model:ir.actions.act_window,name:purchase.purchase_draft
-msgid "Request for Quotations"
+msgid "Purchase Order Resumes"
 msgstr ""
 
 #. module: purchase
@@ -470,7 +470,7 @@ msgstr ""
 
 #. module: purchase
 #: view:purchase.order:0
-msgid "Request for Quotation "
+msgid "Purchase Order Resume "
 msgstr ""
 
 #. module: purchase
@@ -777,8 +777,8 @@ msgstr ""
 
 #. module: purchase
 #: report:purchase.quotation:0
-msgid "Request for Quotation :"
-msgstr "Solicitud de presupuesto :"
+msgid "Purchase Order Resume :"
+msgstr "Pedido de compras resumen :"
 
 #. module: purchase
 #: model:ir.actions.act_window,name:purchase.action_picking_tree4_picking_to_invoice
@@ -922,8 +922,8 @@ msgstr ""
 #. module: purchase
 #: model:ir.actions.report.xml,name:purchase.report_purchase_quotation
 #: selection:purchase.report,state:0
-msgid "Request for Quotation"
-msgstr "Solicitud de presupuesto"
+msgid "Purchase Order Resume"
+msgstr "Pedido de compras resumen"
 
 #. module: purchase
 #: view:purchase.report:0
@@ -1145,7 +1145,7 @@ msgstr ""
 #. module: purchase
 #: model:process.node,note:purchase.process_node_draftpurchaseorder0
 #: model:process.node,note:purchase.process_node_draftpurchaseorder1
-msgid "Request for Quotations."
+msgid "Purchase Order Resumes."
 msgstr ""
 
 #. module: purchase
@@ -1429,7 +1429,7 @@ msgstr ""
 #: model:ir.actions.act_window,help:purchase.purchase_rfq
 msgid ""
 "<p class=\"oe_view_nocontent_create\">\n"
-"                Click to create a request for quotation.\n"
+"                Click to create a Purchase Order Resume.\n"
 "              </p><p>\n"
 "                The quotation contains the history of the "
 "discussion/negociation\n"
@@ -1981,7 +1981,7 @@ msgstr "Estado de la orden"
 
 #. module: purchase
 #: report:purchase.order:0
-msgid "Request for Quotation N°"
+msgid "Purchase Order Resume N°"
 msgstr ""
 
 #. module: purchase
@@ -2204,7 +2204,7 @@ msgid ""
 "                    This supplier has no purchase order. Click to create a "
 "new RfQ.\n"
 "                </p><p>\n"
-"                    The request for quotation is the first step of the "
+"                    The Purchase Order Resume is the first step of the "
 "purchases flow. Once\n"
 "                    converted into a purchase order, you will be able to "
 "control the reception\n"

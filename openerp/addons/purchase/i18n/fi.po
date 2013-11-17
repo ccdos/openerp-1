@@ -496,7 +496,7 @@ msgstr "Päiväkirja"
 #. module: purchase
 #: view:board.board:0
 #: model:ir.actions.act_window,name:purchase.purchase_draft
-msgid "Request for Quotations"
+msgid "Purchase Order Resumes"
 msgstr "Tarjouspyynnöt"
 
 #. module: purchase
@@ -522,7 +522,7 @@ msgstr "Saapuvat tuotteet"
 
 #. module: purchase
 #: view:purchase.order:0
-msgid "Request for Quotation "
+msgid "Purchase Order Resume "
 msgstr "Tarjouspyyntö "
 
 #. module: purchase
@@ -840,7 +840,7 @@ msgstr "Odottaa toimittajan vahvistusta"
 
 #. module: purchase
 #: report:purchase.quotation:0
-msgid "Request for Quotation :"
+msgid "Purchase Order Resume :"
 msgstr "Tarjouspyyntö:"
 
 #. module: purchase
@@ -985,7 +985,7 @@ msgstr "Ostotilaukselta"
 #. module: purchase
 #: model:ir.actions.report.xml,name:purchase.report_purchase_quotation
 #: selection:purchase.report,state:0
-msgid "Request for Quotation"
+msgid "Purchase Order Resume"
 msgstr "Tarjouspyyntö"
 
 #. module: purchase
@@ -1212,7 +1212,7 @@ msgstr "Ostotilaukset jotka ovat poikkeustilassa"
 #. module: purchase
 #: model:process.node,note:purchase.process_node_draftpurchaseorder0
 #: model:process.node,note:purchase.process_node_draftpurchaseorder1
-msgid "Request for Quotations."
+msgid "Purchase Order Resumes."
 msgstr "Tarjouspyynnöt."
 
 #. module: purchase
@@ -1523,7 +1523,7 @@ msgstr "Saapuvien tuotteiden kontrollointi"
 #: model:ir.actions.act_window,help:purchase.purchase_rfq
 msgid ""
 "<p class=\"oe_view_nocontent_create\">\n"
-"                Click to create a request for quotation.\n"
+"                Click to create a Purchase Order Resume.\n"
 "              </p><p>\n"
 "                The quotation contains the history of the "
 "discussion/negociation\n"
@@ -2116,7 +2116,7 @@ msgstr "Tilauksen tila"
 
 #. module: purchase
 #: report:purchase.order:0
-msgid "Request for Quotation N°"
+msgid "Purchase Order Resume N°"
 msgstr "Tarjouspyynnön numero"
 
 #. module: purchase
@@ -2340,7 +2340,7 @@ msgid ""
 "                    This supplier has no purchase order. Click to create a "
 "new RfQ.\n"
 "                </p><p>\n"
-"                    The request for quotation is the first step of the "
+"                    The Purchase Order Resume is the first step of the "
 "purchases flow. Once\n"
 "                    converted into a purchase order, you will be able to "
 "control the reception\n"

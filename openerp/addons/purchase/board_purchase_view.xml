@@ -3,7 +3,7 @@
     <data>
 
         <record id="purchase_draft" model="ir.actions.act_window">
-            <field name="name">Request for Quotations</field>
+            <field name="name">Purchase Order Resumes</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">purchase.order</field>
             <field name="view_type">form</field>
@@ -62,7 +62,7 @@
                 <form string="Purchase Dashboard" version="7.0">
                     <board style="2-1">
                         <column>
-                            <action name="%(purchase_draft)d" string="Request for Quotations"/>
+                            <action name="%(purchase_draft)d" string="Purchase Order Resumes"/>
                         </column>
                         <column>
                             <action name="%(action_purchase_order_monthly_categ_graph)d" string="Monthly Purchases by Category"/>

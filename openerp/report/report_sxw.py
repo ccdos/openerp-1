@@ -347,13 +347,14 @@ class rml_parse(object):
         return text
 
     def _add_header(self, rml_dom, header='external'):
+        
         if header=='internal':
             rml_head =  self.rml_header2
         elif header=='internal landscape':
             rml_head =  self.rml_header3
         else:
             rml_head =  self.rml_header
-
+        
         head_dom = etree.XML(rml_head)
         for tag in head_dom:
             found = rml_dom.find('.//'+tag.tag)
@@ -395,8 +396,8 @@ class report_sxw(report_rml, preprocess.report):
         self.header = header
         self.store = store
         self.internal_header=False
-        if header=='internal' or header=='internal landscape':
-            self.internal_header=True
+        #if header=='internal' or header=='internal landscape':
+        #    self.internal_header=True
 
     def getObjects(self, cr, uid, ids, context):
         table_obj = pooler.get_pool(cr.dbname).get(self.table)

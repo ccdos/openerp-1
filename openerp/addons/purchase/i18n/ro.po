@@ -665,7 +665,7 @@ msgstr "Jurnal"
 #. module: purchase
 #: view:board.board:0
 #: model:ir.actions.act_window,name:purchase.purchase_draft
-msgid "Request for Quotations"
+msgid "Purchase Order Resumes"
 msgstr "Cerere pentru cotatie"
 
 #. module: purchase
@@ -691,7 +691,7 @@ msgstr "Produse Primite"
 
 #. module: purchase
 #: view:purchase.order:0
-msgid "Request for Quotation "
+msgid "Purchase Order Resume "
 msgstr "Cerere pentru Cotatie "
 
 #. module: purchase
@@ -1027,7 +1027,7 @@ msgstr "Confirmare Furnizor in asteptare"
 
 #. module: purchase
 #: report:purchase.quotation:0
-msgid "Request for Quotation :"
+msgid "Purchase Order Resume :"
 msgstr "Cerere de oferta:"
 
 #. module: purchase
@@ -1174,7 +1174,7 @@ msgstr "Dintr-o comanda de achizitie"
 #. module: purchase
 #: model:ir.actions.report.xml,name:purchase.report_purchase_quotation
 #: selection:purchase.report,state:0
-msgid "Request for Quotation"
+msgid "Purchase Order Resume"
 msgstr "Cerere de Cotatie"
 
 #. module: purchase
@@ -1406,7 +1406,7 @@ msgstr "Comenzile de achizitie care se afla in stare de exceptie"
 #. module: purchase
 #: model:process.node,note:purchase.process_node_draftpurchaseorder0
 #: model:process.node,note:purchase.process_node_draftpurchaseorder1
-msgid "Request for Quotations."
+msgid "Purchase Order Resumes."
 msgstr "Cerere de cotații."
 
 #. module: purchase
@@ -1716,7 +1716,7 @@ msgstr "Produse intrate care trebuie controlate"
 #: model:ir.actions.act_window,help:purchase.purchase_rfq
 msgid ""
 "<p class=\"oe_view_nocontent_create\">\n"
-"                Click to create a request for quotation.\n"
+"                Click to create a Purchase Order Resume.\n"
 "              </p><p>\n"
 "                The quotation contains the history of the "
 "discussion/negociation\n"
@@ -2324,7 +2324,7 @@ msgstr "Statusul Comenzii"
 
 #. module: purchase
 #: report:purchase.order:0
-msgid "Request for Quotation N°"
+msgid "Purchase Order Resume N°"
 msgstr "Nr Cererii de cotatie"
 
 #. module: purchase
@@ -2561,7 +2561,7 @@ msgid ""
 "                    This supplier has no purchase order. Click to create a "
 "new RfQ.\n"
 "                </p><p>\n"
-"                    The request for quotation is the first step of the "
+"                    The Purchase Order Resume is the first step of the "
 "purchases flow. Once\n"
 "                    converted into a purchase order, you will be able to "
 "control the reception\n"

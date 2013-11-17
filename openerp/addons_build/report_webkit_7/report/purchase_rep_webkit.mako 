@@ -1,0 +1,56 @@
+<!DOCTYPE html SYSTEM "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+ <head>
+  <style>
+   ${css} 
+  </style>
+ </head>
+ 
+ <body>
+           %for obj in objects:
+
+  <table width="100%" border="0" class="cell_extended">
+             <tr class ="table_parent_data">
+                 <td width="5%" align="center" >
+                     <small>Description</small>
+                 </td>
+                 <td width="5%" align="left" class="head_bottom_border">
+                     <small>Taxes</small>  
+                 </td>
+                 <td width="40%" align="center" >
+                     <small><b> Date Req.</small>  
+                 </td>
+                 <td width="40%" align="right" >
+                     <small><b>Qty</b></small>   
+                 </td>
+                 <td width="5%" align="left" class="head_bottom_border">
+                     <small>Unit Price</small>   
+                 </td>
+                 <td width="5%" align="center">
+                     <small>Net Price</small>  
+                 </td>
+          </tr>
+                  %for line in obj.order_line:
+                   <tr class ="table_parent_data">
+                 <td width="5%" align="center" >
+                     ${ line.name or ''}
+                 </td>
+                 <td width="5%" align="left" class="head_bottom_border">
+                     ${ ', '.join(map(lambda x: x.name, line.taxes_id)) }  
+                 </td>
+                 <td width="40%" align="center" >
+                     ${ formatLang( line.date_planned, date=True) } 
+                 </td>
+                 <td width="40%" align="right" >
+                     ${ formatLang(line.product_qty )  line.product_uom.name }   
+                 </td>
+                 <td width="5%" align="left" class="head_bottom_border">
+                     ${formatLang(line.price_unit, digits=get_digits(dp='Product Price') ) }  
+                 </td>
+                 <td width="5%" align="center">
+                     ${ formatLang(line.price_subtotal, digits=get_digits(dp='Account'), currency_obj=o.pricelist_id.currency_id ) }
+                 </td>
+          </tr>
+             %endfor
+         </table>
+       %endfor

@@ -34,7 +34,7 @@ class purchase_report(osv.osv):
         'date': fields.date('Order Date', readonly=True, help="Date on which this document has been created"),
         'name': fields.char('Year',size=64,required=False, readonly=True),
         'day': fields.char('Day', size=128, readonly=True),
-        'state': fields.selection([('draft', 'Request for Quotation'),
+        'state': fields.selection([('draft', 'Purchase Order Resume'),
                                      ('confirmed', 'Waiting Supplier Ack'),
                                       ('approved', 'Approved'),
                                       ('except_picking', 'Shipping Exception'),
