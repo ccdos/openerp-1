@@ -445,7 +445,7 @@ msgstr ""
 #. module: purchase
 #: view:board.board:0
 #: model:ir.actions.act_window,name:purchase.purchase_draft
-msgid "Purchase Order Resumes"
+msgid "Request for Quotations"
 msgstr "Poptávky"
 
 #. module: purchase
@@ -471,7 +471,7 @@ msgstr ""
 
 #. module: purchase
 #: view:purchase.order:0
-msgid "Purchase Order Resume "
+msgid "Request for Quotation "
 msgstr "Poptávka "
 
 #. module: purchase
@@ -785,7 +785,7 @@ msgstr "Čekání na potvrzení dodavatelem"
 
 #. module: purchase
 #: report:purchase.quotation:0
-msgid "Purchase Order Resume :"
+msgid "Request for Quotation :"
 msgstr "Poptávka:"
 
 #. module: purchase
@@ -930,7 +930,7 @@ msgstr "Z objednávky"
 #. module: purchase
 #: model:ir.actions.report.xml,name:purchase.report_purchase_quotation
 #: selection:purchase.report,state:0
-msgid "Purchase Order Resume"
+msgid "Request for Quotation"
 msgstr "Poptávka"
 
 #. module: purchase
@@ -1157,7 +1157,7 @@ msgstr ""
 #. module: purchase
 #: model:process.node,note:purchase.process_node_draftpurchaseorder0
 #: model:process.node,note:purchase.process_node_draftpurchaseorder1
-msgid "Purchase Order Resumes."
+msgid "Request for Quotations."
 msgstr "Poptávky."
 
 #. module: purchase
@@ -1441,7 +1441,7 @@ msgstr "Příchozí výrobky k ovládání"
 #: model:ir.actions.act_window,help:purchase.purchase_rfq
 msgid ""
 "<p class=\"oe_view_nocontent_create\">\n"
-"                Click to create a Purchase Order Resume.\n"
+"                Click to create a request for quotation.\n"
 "              </p><p>\n"
 "                The quotation contains the history of the "
 "discussion/negociation\n"
@@ -2007,7 +2007,7 @@ msgstr ""
 
 #. module: purchase
 #: report:purchase.order:0
-msgid "Purchase Order Resume N°"
+msgid "Request for Quotation N°"
 msgstr "Poptávka č."
 
 #. module: purchase
@@ -2230,7 +2230,7 @@ msgid ""
 "                    This supplier has no purchase order. Click to create a "
 "new RfQ.\n"
 "                </p><p>\n"
-"                    The Purchase Order Resume is the first step of the "
+"                    The request for quotation is the first step of the "
 "purchases flow. Once\n"
 "                    converted into a purchase order, you will be able to "
 "control the reception\n"

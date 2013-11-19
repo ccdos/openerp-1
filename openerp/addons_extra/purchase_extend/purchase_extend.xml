@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report auto="False" id="report_purchase_order_resume" model="purchase.order" 
+                name="purchase.order_resume" rml="purchase_extend/report/purchase_order_resume.rml"
+                string="Purchase Order Resume"/>      
+    </data>
+</openerp>

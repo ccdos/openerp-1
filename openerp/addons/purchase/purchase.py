@@ -438,7 +438,7 @@ class purchase_order(osv.osv):
 
     def print_quotation(self, cr, uid, ids, context=None):
         '''
-        This function prints the Purchase Order Resume and mark it as sent, so that we can see more easily the next step of the workflow
+        This function prints the request for quotation and mark it as sent, so that we can see more easily the next step of the workflow
         '''
         assert len(ids) == 1, 'This option should only be used for a single id at a time'
         wf_service = netsvc.LocalService("workflow")

@@ -22,8 +22,8 @@ msgid ""
 "The buyer has to approve the RFQ before being sent to the supplier. The RFQ "
 "becomes a confirmed Purchase Order."
 msgstr ""
-"El comprador debe aprobar la Pedido de compras resumen antes de enviar al "
-"proveedor. La Pedido de compras resumen se convertirá en un pedido de compra "
+"El comprador debe aprobar la solicitud de presupuesto antes de enviar al "
+"proveedor. La solicitud de presupuesto se convertirá en un pedido de compra "
 "confirmado."
 
 #. module: purchase
@@ -63,10 +63,10 @@ msgstr "Fecha en el que fue creado este documento."
 #. module: purchase
 #: model:ir.actions.act_window,help:purchase.purchase_rfq
 msgid ""
-"You can create a Purchase Order Resume when you want to buy products to a "
+"You can create a request for quotation when you want to buy products to a "
 "supplier but the purchase is not confirmed yet. Use also this menu to review "
 "requests for quotation created automatically based on your logistic rules "
-"(minimum stock, MTO, etc). You can convert the Purchase Order Resume into a "
+"(minimum stock, MTO, etc). You can convert the request for quotation into a "
 "purchase order once the order is confirmed. If you use the extended "
 "interface (from user's preferences), you can select the way to control your "
 "supplier invoices: based on the order, based on the receptions or manual "
@@ -951,7 +951,7 @@ msgstr "Esperando aceptación proveedor"
 
 #. module: purchase
 #: report:purchase.quotation:0
-msgid "Purchase Order Resume :"
+msgid "Request for Quotation :"
 msgstr "Presupuesto solicitado:"
 
 #. module: purchase
@@ -1328,7 +1328,7 @@ msgid ""
 "received, the state becomes 'Done'. If a cancel action occurs in the invoice "
 "or in the reception of goods, the state becomes in exception."
 msgstr ""
-"El estado del pedido de compra o de la Pedido de compras resumen. Un "
+"El estado del pedido de compra o de la solicitud de presupuesto. Un "
 "presupuesto es un pedido de compra en estado 'Borrador'. Entonces, si el "
 "pedido es confirmado por el usuario, el estado cambiará a 'Confirmado'. "
 "Entonces el proveedor debe confirmar el pedido para cambiar el estado a "
@@ -1383,7 +1383,7 @@ msgstr "Posición fiscal"
 
 #. module: purchase
 #: report:purchase.order:0
-msgid "Purchase Order Resume N°"
+msgid "Request for Quotation N°"
 msgstr "Petición de presupuesto Nº"
 
 #. module: purchase
@@ -1454,8 +1454,8 @@ msgstr "Total pedidos por usuario mensual"
 #: model:ir.actions.report.xml,name:purchase.report_purchase_quotation
 #: selection:purchase.order,state:0
 #: selection:purchase.report,state:0
-msgid "Purchase Order Resume"
-msgstr "Pedido de compras resumen"
+msgid "Request for Quotation"
+msgstr "Solicitud de presupuesto"
 
 #. module: purchase
 #: report:purchase.order:0
@@ -1490,8 +1490,8 @@ msgstr "Almacén"
 #. module: purchase
 #: model:process.node,note:purchase.process_node_draftpurchaseorder0
 #: model:process.node,note:purchase.process_node_draftpurchaseorder1
-msgid "Purchase Order Resumes."
-msgstr "Pedido de compras resumen"
+msgid "Request for Quotations."
+msgstr "Solicitud de presupuesto"
 
 #. module: purchase
 #: report:purchase.order:0
@@ -1589,8 +1589,8 @@ msgstr "Entrega"
 #. module: purchase
 #: view:board.board:0
 #: model:ir.actions.act_window,name:purchase.purchase_draft
-msgid "Purchase Order Resumes"
-msgstr "Pedido de compras resumens"
+msgid "Request for Quotations"
+msgstr "Solicitud de presupuestos"
 
 #. module: purchase
 #: field:purchase.order.line,product_uom:0
@@ -1927,10 +1927,10 @@ msgstr "Tablero de compras"
 
 #~ msgid ""
 #~ "Module for purchase management\n"
-#~ "    Purchase Order Resume, Create Supplier Invoice, Print Order..."
+#~ "    Request for quotation, Create Supplier Invoice, Print Order..."
 #~ msgstr ""
 #~ "Módulo para la gestión de compras\n"
-#~ "    Pedido de compras resumen, crear pedido de compra, crear factura de "
+#~ "    Solicitud de presupuesto, crear pedido de compra, crear factura de "
 #~ "proveedor, imprimir pedido de compra..."
 
 #~ msgid "Supplier Invoice pre-generated on receptions for control"
@@ -1981,8 +1981,8 @@ msgstr "Tablero de compras"
 #~ msgid "Product Receipt"
 #~ msgstr "Recepción producto"
 
-#~ msgid "Confirm Purchase order from Purchase Order Resume without origin"
-#~ msgstr "Confirmar pedido de compra desde Pedido de compras resumen sin origen"
+#~ msgid "Confirm Purchase order from Request for quotation without origin"
+#~ msgstr "Confirmar pedido de compra desde solicitud de presupuesto sin origen"
 
 #~ msgid "Planned Date"
 #~ msgstr "Fecha prevista"
@@ -2014,8 +2014,8 @@ msgstr "Tablero de compras"
 #~ msgid "Encoded manually by the user."
 #~ msgstr "Codificación manual del usuario."
 
-#~ msgid "Confirm Purchase order from Purchase Order Resume"
-#~ msgstr "Confirmar pedido de compra desde Pedido de compras resumen"
+#~ msgid "Confirm Purchase order from Request for quotation"
+#~ msgstr "Confirmar pedido de compra desde solicitud de presupuesto"
 
 #~ msgid "Confirm Purchase Order"
 #~ msgstr "Confirmar pedido de compra"
@@ -2029,8 +2029,8 @@ msgstr "Tablero de compras"
 #~ msgid "Purchase order"
 #~ msgstr "Pedido de compra"
 
-#~ msgid "Purchase Order Resume is proposed by the system."
-#~ msgstr "La Pedido de compras resumen es propuesta por el sistema."
+#~ msgid "Request for quotation is proposed by the system."
+#~ msgstr "La solicitud de presupuesto es propuesta por el sistema."
 
 #~ msgid "Packing Invoice"
 #~ msgstr "Facturar paquete"
@@ -2119,8 +2119,8 @@ msgstr "Tablero de compras"
 #~ msgid "Date"
 #~ msgstr "Fecha"
 
-#~ msgid "Purchase Order Resumes"
-#~ msgstr "Pedido de compras resumens"
+#~ msgid "Request For Quotations"
+#~ msgstr "Solicitud de presupuestos"
 
 #~ msgid ""
 #~ "Error ! You cannot assign the Main Pricelist as Other Pricelist in PriceList "

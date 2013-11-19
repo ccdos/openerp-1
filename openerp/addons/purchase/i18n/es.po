@@ -492,8 +492,8 @@ msgstr "Diario"
 #. module: purchase
 #: view:board.board:0
 #: model:ir.actions.act_window,name:purchase.purchase_draft
-msgid "Purchase Order Resumes"
-msgstr "Pedido de compras resumens"
+msgid "Request for Quotations"
+msgstr "Solicitud de presupuestos"
 
 #. module: purchase
 #: field:purchase.order.line,move_ids:0
@@ -518,8 +518,8 @@ msgstr "Productos a recibir"
 
 #. module: purchase
 #: view:purchase.order:0
-msgid "Purchase Order Resume "
-msgstr "Pedido de compras resumen "
+msgid "Request for Quotation "
+msgstr "Solicitud de presupuesto "
 
 #. module: purchase
 #: help:purchase.order,partner_ref:0
@@ -577,8 +577,8 @@ msgid ""
 "The buyer has to approve the RFQ before being sent to the supplier. The RFQ "
 "becomes a confirmed Purchase Order."
 msgstr ""
-"El comprador debe aprobar la Pedido de compras resumen antes de enviarla al "
-"proveedor. La Pedido de compras resumen se convertirá en un pedido de compra "
+"El comprador debe aprobar la solicitud de presupuesto antes de enviarla al "
+"proveedor. La solicitud de presupuesto se convertirá en un pedido de compra "
 "confirmado."
 
 #. module: purchase
@@ -851,8 +851,8 @@ msgstr "Esperando aceptación proveedor"
 
 #. module: purchase
 #: report:purchase.quotation:0
-msgid "Purchase Order Resume :"
-msgstr "Pedido de compras resumen:"
+msgid "Request for Quotation :"
+msgstr "Solicitud de presupuesto:"
 
 #. module: purchase
 #: model:ir.actions.act_window,name:purchase.action_picking_tree4_picking_to_invoice
@@ -996,8 +996,8 @@ msgstr "Desde un pedido de compra"
 #. module: purchase
 #: model:ir.actions.report.xml,name:purchase.report_purchase_quotation
 #: selection:purchase.report,state:0
-msgid "Purchase Order Resume"
-msgstr "Pedido de compras resumen"
+msgid "Request for Quotation"
+msgstr "Solicitud de presupuesto"
 
 #. module: purchase
 #: view:purchase.report:0
@@ -1230,8 +1230,8 @@ msgstr "Pedidos de compra que están en estado de excepción"
 #. module: purchase
 #: model:process.node,note:purchase.process_node_draftpurchaseorder0
 #: model:process.node,note:purchase.process_node_draftpurchaseorder1
-msgid "Purchase Order Resumes."
-msgstr "Pedido de compras resumens."
+msgid "Request for Quotations."
+msgstr "Solicitud de presupuestos."
 
 #. module: purchase
 #: view:purchase.order:0
@@ -1541,7 +1541,7 @@ msgstr "Productos de entrada a controlar"
 #: model:ir.actions.act_window,help:purchase.purchase_rfq
 msgid ""
 "<p class=\"oe_view_nocontent_create\">\n"
-"                Click to create a Purchase Order Resume.\n"
+"                Click to create a request for quotation.\n"
 "              </p><p>\n"
 "                The quotation contains the history of the "
 "discussion/negociation\n"
@@ -1555,10 +1555,10 @@ msgid ""
 "            "
 msgstr ""
 "<p class=\"oe_view_nocontent_create\">\n"
-"Pulse para crear una Pedido de compras resumen.\n"
+"Pulse para crear una solicitud de presupuesto.\n"
 "</p><p>\n"
 "El presupuesto contiene el historial de la discusión/negociación que tiene "
-"con su proveedor. Una vez confirmada, la Pedido de compras resumen se "
+"con su proveedor. Una vez confirmada, la solicitud de presupuesto se "
 "convierte en un pedido de compra.\n"
 "</p><p>\n"
 "La mayoría de propuestas de pedidos de compra se crean automáticamente por "
@@ -1845,7 +1845,7 @@ msgid ""
 "paid and received, the status becomes 'Done'. If a cancel action occurs in "
 "the invoice or in the reception of goods, the status becomes in exception."
 msgstr ""
-"Estado del pedido de compra o de la Pedido de compras resumen. Un presupuesto "
+"Estado del pedido de compra o de la solicitud de presupuesto. Un presupuesto "
 "en un pedido de venta en estado 'Borrador'. Entonces el pedido debe ser "
 "confirmado por el usuario, y el estado pasa a 'Confirmado'. El proveedor "
 "debe confirmar el pedido para pasar a estado 'Aprobado'. Cuando el pedido se "
@@ -2145,8 +2145,8 @@ msgstr "Estado del pedido"
 
 #. module: purchase
 #: report:purchase.order:0
-msgid "Purchase Order Resume N°"
-msgstr "Pedido de compras resumen Nº"
+msgid "Request for Quotation N°"
+msgstr "Solicitud de presupuesto Nº"
 
 #. module: purchase
 #: view:purchase.config.settings:0
@@ -2458,7 +2458,7 @@ msgid ""
 "                    This supplier has no purchase order. Click to create a "
 "new RfQ.\n"
 "                </p><p>\n"
-"                    The Purchase Order Resume is the first step of the "
+"                    The request for quotation is the first step of the "
 "purchases flow. Once\n"
 "                    converted into a purchase order, you will be able to "
 "control the reception\n"
@@ -2470,7 +2470,7 @@ msgstr ""
 "Este proveedor no tiene ningún pedido de venta. Pulse para crear una nueva "
 "SdP.\n"
 "</p><p>\n"
-"La Pedido de compras resumen (SdP) es el primer paso en el flujo de compras. "
+"La solicitud de presupuesto (SdP) es el primer paso en el flujo de compras. "
 "Una vez convertida en un pedido de compra, será capaz de gestionar la "
 "recepción de los productos y la factura de proveedor.\n"
 "</p>\n"

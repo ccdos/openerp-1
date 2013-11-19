@@ -91,7 +91,7 @@
     <para style="Standard">
       <font color="white"> </font>
     </para>
-    <para style="terp_header"><b>Pedido Compras Nº: [[order.name]]</b></para>
+    <para style="terp_header"><b>Request for Quotation : [[order.name]]</b></para>
     <para style="terp_default_8">
       <font color="white"> </font>
     </para>
@@ -134,7 +134,7 @@
     <para style="terp_default_9">
       <font color="white"> </font>
     </para>
-    <para style="terp_default_9">Signature,</para>
+    <para style="terp_default_9">Regards,</para>
     <para style="terp_default_9">
       <font color="white"> </font>
     </para>

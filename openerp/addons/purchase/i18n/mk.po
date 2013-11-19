@@ -494,7 +494,7 @@ msgstr "Дневник"
 #. module: purchase
 #: view:board.board:0
 #: model:ir.actions.act_window,name:purchase.purchase_draft
-msgid "Purchase Order Resumes"
+msgid "Request for Quotations"
 msgstr "Барања за понуди"
 
 #. module: purchase
@@ -520,7 +520,7 @@ msgstr "Влезни производи"
 
 #. module: purchase
 #: view:purchase.order:0
-msgid "Purchase Order Resume "
+msgid "Request for Quotation "
 msgstr "Барање за понуда "
 
 #. module: purchase
@@ -855,7 +855,7 @@ msgstr ""
 
 #. module: purchase
 #: report:purchase.quotation:0
-msgid "Purchase Order Resume :"
+msgid "Request for Quotation :"
 msgstr "Барање за понуда :"
 
 #. module: purchase
@@ -1000,7 +1000,7 @@ msgstr "Од налог за набавка"
 #. module: purchase
 #: model:ir.actions.report.xml,name:purchase.report_purchase_quotation
 #: selection:purchase.report,state:0
-msgid "Purchase Order Resume"
+msgid "Request for Quotation"
 msgstr "Барање за понуда"
 
 #. module: purchase
@@ -1236,7 +1236,7 @@ msgstr "Налози за набавка кои се во состојба на 
 #. module: purchase
 #: model:process.node,note:purchase.process_node_draftpurchaseorder0
 #: model:process.node,note:purchase.process_node_draftpurchaseorder1
-msgid "Purchase Order Resumes."
+msgid "Request for Quotations."
 msgstr "Барања за понуди."
 
 #. module: purchase
@@ -1540,7 +1540,7 @@ msgstr "Да се контролираат влезните производи"
 #: model:ir.actions.act_window,help:purchase.purchase_rfq
 msgid ""
 "<p class=\"oe_view_nocontent_create\">\n"
-"                Click to create a Purchase Order Resume.\n"
+"                Click to create a request for quotation.\n"
 "              </p><p>\n"
 "                The quotation contains the history of the "
 "discussion/negociation\n"
@@ -2146,7 +2146,7 @@ msgstr "Статус на нарачката"
 
 #. module: purchase
 #: report:purchase.order:0
-msgid "Purchase Order Resume N°"
+msgid "Request for Quotation N°"
 msgstr "Барање за понуда бр."
 
 #. module: purchase
@@ -2382,7 +2382,7 @@ msgid ""
 "                    This supplier has no purchase order. Click to create a "
 "new RfQ.\n"
 "                </p><p>\n"
-"                    The Purchase Order Resume is the first step of the "
+"                    The request for quotation is the first step of the "
 "purchases flow. Once\n"
 "                    converted into a purchase order, you will be able to "
 "control the reception\n"
@@ -2491,7 +2491,7 @@ msgstr "Налози"
 #~ "\n"
 #~ "    <p>Здраво$ ${object.partner_id.name},</p>\n"
 #~ "    \n"
-#~ "    <p>Ова е ${object.state in ('draft', 'sent') and 'Purchase Order Resume' "
+#~ "    <p>Ова е ${object.state in ('draft', 'sent') and 'request for quotation' "
 #~ "or 'purchase order confirmation'} од ${object.company_id.name}: </p>\n"
 #~ "    \n"
 #~ "    <p style=\"border-left: 1px solid #8e0000; margin-left: 30px;\">\n"

@@ -410,7 +410,7 @@ msgstr ""
 #. module: purchase
 #: view:board.board:0
 #: model:ir.actions.act_window,name:purchase.purchase_draft
-msgid "Purchase Order Resumes"
+msgid "Request for Quotations"
 msgstr ""
 
 #. module: purchase
@@ -436,7 +436,7 @@ msgstr ""
 
 #. module: purchase
 #: view:purchase.order:0
-msgid "Purchase Order Resume "
+msgid "Request for Quotation "
 msgstr ""
 
 #. module: purchase
@@ -725,7 +725,7 @@ msgstr ""
 
 #. module: purchase
 #: report:purchase.quotation:0
-msgid "Purchase Order Resume :"
+msgid "Request for Quotation :"
 msgstr ""
 
 #. module: purchase
@@ -870,7 +870,7 @@ msgstr ""
 #. module: purchase
 #: model:ir.actions.report.xml,name:purchase.report_purchase_quotation
 #: selection:purchase.report,state:0
-msgid "Purchase Order Resume"
+msgid "Request for Quotation"
 msgstr ""
 
 #. module: purchase
@@ -1085,7 +1085,7 @@ msgstr ""
 #. module: purchase
 #: model:process.node,note:purchase.process_node_draftpurchaseorder0
 #: model:process.node,note:purchase.process_node_draftpurchaseorder1
-msgid "Purchase Order Resumes."
+msgid "Request for Quotations."
 msgstr ""
 
 #. module: purchase
@@ -1355,7 +1355,7 @@ msgstr ""
 #. module: purchase
 #: model:ir.actions.act_window,help:purchase.purchase_rfq
 msgid "<p class=\"oe_view_nocontent_create\">\n"
-"                Click to create a Purchase Order Resume.\n"
+"                Click to create a request for quotation.\n"
 "              </p><p>\n"
 "                The quotation contains the history of the discussion/negociation\n"
 "                you had with your supplier. Once confirmed, a request for\n"
@@ -1685,7 +1685,7 @@ msgstr ""
 #. module: purchase
 #: help:purchase.config.settings,module_purchase_requisition:0
 msgid "Purchase Requisitions are used when you want to request quotations from several suppliers for a given set of products.\n"
-"            You can configure per product if you directly do a Purchase Order Resume\n"
+"            You can configure per product if you directly do a Request for Quotation\n"
 "            to one supplier or if you want a purchase requisition to negotiate with several suppliers."
 msgstr ""
 
@@ -1873,7 +1873,7 @@ msgstr ""
 
 #. module: purchase
 #: report:purchase.order:0
-msgid "Purchase Order Resume N°"
+msgid "Request for Quotation N°"
 msgstr ""
 
 #. module: purchase
@@ -1928,7 +1928,7 @@ msgid "\n"
 "\n"
 "    <p>Hello ${object.partner_id.name},</p>\n"
 "    \n"
-"    <p>Here is a ${object.state in ('draft', 'sent') and 'Purchase Order Resume' or 'purchase order confirmation'} from ${object.company_id.name}: </p>\n"
+"    <p>Here is a ${object.state in ('draft', 'sent') and 'request for quotation' or 'purchase order confirmation'} from ${object.company_id.name}: </p>\n"
 "    \n"
 "    <p style=\"border-left: 1px solid #8e0000; margin-left: 30px;\">\n"
 "       &nbsp;&nbsp;<strong>REFERENCES</strong><br />\n"
@@ -2074,7 +2074,7 @@ msgstr ""
 msgid "<p class=\"oe_view_nocontent_create\">\n"
 "                    This supplier has no purchase order. Click to create a new RfQ.\n"
 "                </p><p>\n"
-"                    The Purchase Order Resume is the first step of the purchases flow. Once\n"
+"                    The request for quotation is the first step of the purchases flow. Once\n"
 "                    converted into a purchase order, you will be able to control the reception\n"
 "                    of the products and the supplier invoice.\n"
 "                </p>\n"

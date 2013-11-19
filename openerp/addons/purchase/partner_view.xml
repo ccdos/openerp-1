@@ -24,7 +24,7 @@
                 <p class="oe_view_nocontent_create">
                     This supplier has no purchase order. Click to create a new RfQ.
                 </p><p>
-                    The Purchase Order Resume is the first step of the purchases flow. Once
+                    The request for quotation is the first step of the purchases flow. Once
                     converted into a purchase order, you will be able to control the reception
                     of the products and the supplier invoice.
                 </p>

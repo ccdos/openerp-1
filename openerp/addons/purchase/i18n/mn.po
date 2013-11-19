@@ -493,7 +493,7 @@ msgstr "Журнал"
 #. module: purchase
 #: view:board.board:0
 #: model:ir.actions.act_window,name:purchase.purchase_draft
-msgid "Purchase Order Resumes"
+msgid "Request for Quotations"
 msgstr "Үнийн санал"
 
 #. module: purchase
@@ -519,7 +519,7 @@ msgstr "Ирж буй бараа"
 
 #. module: purchase
 #: view:purchase.order:0
-msgid "Purchase Order Resume "
+msgid "Request for Quotation "
 msgstr "Үнийн саналын хүсэлт "
 
 #. module: purchase
@@ -854,7 +854,7 @@ msgstr "Нийлүүлэгчийн магадлагааг хүлээж буй"
 
 #. module: purchase
 #: report:purchase.quotation:0
-msgid "Purchase Order Resume :"
+msgid "Request for Quotation :"
 msgstr "Үнэ авах хүсэлт :"
 
 #. module: purchase
@@ -999,7 +999,7 @@ msgstr "Худалдан авалтын захиалгаас"
 #. module: purchase
 #: model:ir.actions.report.xml,name:purchase.report_purchase_quotation
 #: selection:purchase.report,state:0
-msgid "Purchase Order Resume"
+msgid "Request for Quotation"
 msgstr "Үнийн санал"
 
 #. module: purchase
@@ -1233,7 +1233,7 @@ msgstr "Сондгой төлөвтэй худалдан авалтын захи
 #. module: purchase
 #: model:process.node,note:purchase.process_node_draftpurchaseorder0
 #: model:process.node,note:purchase.process_node_draftpurchaseorder1
-msgid "Purchase Order Resumes."
+msgid "Request for Quotations."
 msgstr "Үнийн саналын хүснэгт."
 
 #. module: purchase
@@ -1536,7 +1536,7 @@ msgstr "Ирж буй барааг удирдах"
 #: model:ir.actions.act_window,help:purchase.purchase_rfq
 msgid ""
 "<p class=\"oe_view_nocontent_create\">\n"
-"                Click to create a Purchase Order Resume.\n"
+"                Click to create a request for quotation.\n"
 "              </p><p>\n"
 "                The quotation contains the history of the "
 "discussion/negociation\n"
@@ -2138,7 +2138,7 @@ msgstr "Захиалгын төлөв"
 
 #. module: purchase
 #: report:purchase.order:0
-msgid "Purchase Order Resume N°"
+msgid "Request for Quotation N°"
 msgstr "Үнийн санал N°"
 
 #. module: purchase
@@ -2373,7 +2373,7 @@ msgid ""
 "                    This supplier has no purchase order. Click to create a "
 "new RfQ.\n"
 "                </p><p>\n"
-"                    The Purchase Order Resume is the first step of the "
+"                    The request for quotation is the first step of the "
 "purchases flow. Once\n"
 "                    converted into a purchase order, you will be able to "
 "control the reception\n"
@@ -2490,7 +2490,7 @@ msgstr "Захиалга"
 #~ "    <p>Сайн байна уу$ ${object.partner_id.name},</p>\n"
 #~ "    \n"
 #~ "    <p>Энд ${object.company_id.name}-с ${object.state in ('draft', 'sent') "
-#~ "and 'Purchase Order Resume' or 'purchase order confirmation'} : </p>\n"
+#~ "and 'request for quotation' or 'purchase order confirmation'} : </p>\n"
 #~ "    \n"
 #~ "    <p style=\"border-left: 1px solid #8e0000; margin-left: 30px;\">\n"
 #~ "       &nbsp;&nbsp;<strong>Сурвалжууд</strong><br />\n"

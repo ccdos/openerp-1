@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: openobject-addons\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-06-07 19:36+0000\n"
-"PO-Revision-Date: 2013-11-04 12:10+0000\n"
-"Last-Translator: Stefan Rijnhart (Therp) <Unknown>\n"
+"PO-Revision-Date: 2013-11-08 09:46+0000\n"
+"Last-Translator: Erwin van der Ploeg (BAS Solutions) <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-05 06:00+0000\n"
+"X-Launchpad-Export-Date: 2013-11-10 06:45+0000\n"
 "X-Generator: Launchpad (build 16820)\n"
 
 #. module: purchase
@@ -457,6 +457,8 @@ msgid ""
 "Put an address if you want to deliver directly from the supplier to the "
 "customer. Otherwise, keep empty to deliver to your own company."
 msgstr ""
+"Geef een adres in, indien u direct vanaf de leverancier wilt leveren aan de "
+"klant. Laat leeg om te leveren aan uw eigen bedrijf."
 
 #. module: purchase
 #: model:ir.actions.act_window,help:purchase.purchase_line_form_action2
@@ -502,7 +504,7 @@ msgstr "Dagboek"
 #. module: purchase
 #: view:board.board:0
 #: model:ir.actions.act_window,name:purchase.purchase_draft
-msgid "Purchase Order Resumes"
+msgid "Request for Quotations"
 msgstr "Offerteaanvraag"
 
 #. module: purchase
@@ -528,7 +530,7 @@ msgstr "Inkomende producten"
 
 #. module: purchase
 #: view:purchase.order:0
-msgid "Purchase Order Resume "
+msgid "Request for Quotation "
 msgstr "Offerte aanvraag "
 
 #. module: purchase
@@ -865,7 +867,7 @@ msgstr "Wacht lever. bevest."
 
 #. module: purchase
 #: report:purchase.quotation:0
-msgid "Purchase Order Resume :"
+msgid "Request for Quotation :"
 msgstr "Offerteaanvraag :"
 
 #. module: purchase
@@ -1010,7 +1012,7 @@ msgstr "Van een inkooporder"
 #. module: purchase
 #: model:ir.actions.report.xml,name:purchase.report_purchase_quotation
 #: selection:purchase.report,state:0
-msgid "Purchase Order Resume"
+msgid "Request for Quotation"
 msgstr "Offerte-aanvraag"
 
 #. module: purchase
@@ -1246,7 +1248,7 @@ msgstr "Inkooporders met fouten"
 #. module: purchase
 #: model:process.node,note:purchase.process_node_draftpurchaseorder0
 #: model:process.node,note:purchase.process_node_draftpurchaseorder1
-msgid "Purchase Order Resumes."
+msgid "Request for Quotations."
 msgstr "Offerteaanvraag"
 
 #. module: purchase
@@ -1567,7 +1569,7 @@ msgstr "Te controleren ontvangsten"
 #: model:ir.actions.act_window,help:purchase.purchase_rfq
 msgid ""
 "<p class=\"oe_view_nocontent_create\">\n"
-"                Click to create a Purchase Order Resume.\n"
+"                Click to create a request for quotation.\n"
 "              </p><p>\n"
 "                The quotation contains the history of the "
 "discussion/negociation\n"
@@ -2171,7 +2173,7 @@ msgstr "Order status"
 
 #. module: purchase
 #: report:purchase.order:0
-msgid "Purchase Order Resume N°"
+msgid "Request for Quotation N°"
 msgstr "Verzoek om offerte nr."
 
 #. module: purchase
@@ -2484,7 +2486,7 @@ msgid ""
 "                    This supplier has no purchase order. Click to create a "
 "new RfQ.\n"
 "                </p><p>\n"
-"                    The Purchase Order Resume is the first step of the "
+"                    The request for quotation is the first step of the "
 "purchases flow. Once\n"
 "                    converted into a purchase order, you will be able to "
 "control the reception\n"

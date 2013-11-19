@@ -12,9 +12,17 @@
             <xpath expr="/form/sheet/div[2]/button[@name='51']" position="after">
                  <button name="%(preview_report_internal)d" string="Preview internal" type="action"/> 
                  <button name="%(preview_report_apaisado)d" string="Preview apaisado" type="action"/> 
-                 <button name="%(preview_report_webkit)d" string="Preview webkit" type="action"/>              
+                 <button name="%(preview_report_webkit)d" string="Preview webkit" type="action"/>                          
             </xpath>
+        	<xpath expr="/form/sheet/notebook/page[@string='General Information']/group[1]/group[2]/field[@name='company_registry']" position="after">        
+		        <field name="registry_mercantil"/>
+		        <field name="lpd"/>
+       		</xpath>
+            
         </field>
-    </record>
+        
+    </record>  
+    
+      
   </data>
 </openerp>
