@@ -1027,7 +1027,7 @@ class procurement_order(osv.osv):
         '''
         user = self.pool.get('res.users').browse(cr, uid, uid, context=context)
         for procurement in self.browse(cr, uid, ids, context=context):
-            if procurement.product_id.supply_method <> 'buy':
+            if procurement.product_id.supply_method == 'produce':
                 return False
         return True
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+     	
+   		<record id="procurement.act_confirm_mto" model="workflow.activity">
+            <field name="wkf_id" ref="procurement.wkf_procurement"/>
+            <field name="name">confirm_mto</field>
+            <field name="split_mode">OR</field>
+        </record>
+    	
+    </data>
+		
+  
+</openerp>
