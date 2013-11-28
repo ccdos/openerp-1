@@ -399,6 +399,7 @@ class report_sxw(report_rml, preprocess.report):
         #if header=='internal' or header=='internal landscape':
         #    self.internal_header=True
 
+       
     def getObjects(self, cr, uid, ids, context):
         table_obj = pooler.get_pool(cr.dbname).get(self.table)
         return table_obj.browse(cr, uid, ids, list_class=browse_record_list, context=context, fields_process=_fields_process)

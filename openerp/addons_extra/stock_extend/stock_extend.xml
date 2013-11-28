@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+         <report 
+	         id="stock.report_picking_list" 
+	         model="stock.picking" 
+	         name="stock.picking.list_extend" 
+	         string="Picking Slip" 
+	         rml="stock_extend/report/picking.rml"
+	    />
+        <report 
+	        id="stock.report_picking_list_in" 
+	        model="stock.picking.in" 
+	        name="stock.picking.list_extend.in" 
+	        string="Receipt Slip" 
+	        rml="stock_extend/report/picking.rml"
+	    />
+        <report id="stock.report_picking_list_out" 
+	        model="stock.picking.out" 
+	        name="stock.picking.list_extend.out" 
+	        string="Delivery Slip" 
+	        rml="stock_extend/report/picking.rml"
+	    />
+    </data>
+</openerp>

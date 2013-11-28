@@ -21,4 +21,30 @@
 #
 ##############################################################################
 
-import account_extend
+{
+    'name': 'Stock Extend',
+    'version': '1.0',
+    'author': 'jmesteve',
+    'category': 'Warehouse Management',
+    'description': """
+        [ENG] Extend module stock .
+    """,
+    'website': 'https://github.com/jmesteve',
+    'license': 'AGPL-3',
+    'images': [],
+    'depends': ['product', 'account'],
+    'data': ['stock_extend.xml'],
+    'demo': [],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+}
+
+
+
+
+
+
+
+
+

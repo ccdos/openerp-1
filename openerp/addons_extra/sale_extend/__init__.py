@@ -21,31 +21,6 @@
 #
 ##############################################################################
 
-{
-    'name': 'Account Extend', 
-    'version': '1.1',
-    'author': 'jmesteve',
-    'category': 'Accounting & Finance',
-    'sequence': 3,
-    'description': """
-        [ENG] Extend module account .
-    """,
-    'website': 'https://github.com/jmesteve',
-    'license': 'AGPL-3',
-    'images': [],
-    'depends' : ['account'],
-    'data': [],
-    'demo': [],
-    'installable': True,
-    'application': True,
-    'auto_install': False,
-}
-
-
-
-
-
-
-
+import sale_extend
 
 
