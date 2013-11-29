@@ -21,6 +21,15 @@
 #
 ##############################################################################
 
-import sale_extend
+from openerp.report import report_sxw
+
+class rmlparser(report_sxw.rml_parse):
+    def set_context(self, objects, data, ids, report_type = None):
+        super(rmlparser,self).set_context(objects, data, ids, report_type)
+        self.setCompany(objects[0])
+
+report_sxw.report_sxw('report.preview.report.shipping', 'res.company',
+      'addons/base_extend/report/preview_report_shipping.rml', parser=rmlparser, header='shipping')
 
 
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

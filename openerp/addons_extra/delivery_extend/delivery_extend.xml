@@ -4,7 +4,7 @@
         <report
             id="delivery.report_shipping"
             model="stock.picking"
-            name="sale.shipping_extend"
+            name="stock.picking_extend"
             multi="True"
             rml="delivery_extend/report/shipping.rml"
             string="Delivery order"

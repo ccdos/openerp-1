@@ -202,6 +202,7 @@ class rml_parse(object):
             self.rml_header = company_id.rml_header
             self.rml_header2 = company_id.rml_header2
             self.rml_header3 = company_id.rml_header3
+            self.rml_header4 = company_id.rml_header4
             self.logo = company_id.logo
 
     def _strip_name(self, name, maxlen=50):
@@ -352,6 +353,8 @@ class rml_parse(object):
             rml_head =  self.rml_header2
         elif header=='internal landscape':
             rml_head =  self.rml_header3
+        elif header=='shipping':
+            rml_head =  self.rml_header4
         else:
             rml_head =  self.rml_header
         

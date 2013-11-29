@@ -30,6 +30,6 @@ class shipping(report_sxw.rml_parse):
             'time': time,
         })
 
-report_sxw.report_sxw('report.sale.shipping_extend','stock.picking','addons_extra/delivery_extend/report/shipping.rml',parser=shipping, header="internal")
+report_sxw.report_sxw('report.stock.picking_extend','stock.picking','addons_extra/delivery_extend/report/shipping.rml',parser=shipping, header="shipping")
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

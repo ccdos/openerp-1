@@ -4,21 +4,31 @@
     <report id="preview_report_internal" report_type="pdf" model="res.company" name="preview.report.internal" multi="True" auto="True" header="True" rml="base_extend/report/preview_report_internal.rml" string="Preview Report Internal"/>
     <report id="preview_report_apaisado" report_type="pdf" model="res.company" name="preview.report.apaisado" multi="True" auto="True" header="True" rml="base_extend/report/preview_report_apaisado.rml" string="Preview Report Apaisado"/>
     <report id="preview_report_webkit" report_type="webkit" model="res.company" name="preview.report.webkit" multi="True" auto="True" header="False" string="Preview Report Webkit"/>
-    <record model="ir.ui.view" id="base_extend">
+    <report id="preview_report_shipping" report_type="pdf" model="res.company" name="preview.report.shipping" multi="True" auto="True" header="True" rml="base_extend/report/preview_report_shipping.rml" string="Preview Report Shipping"/>
+	<record model="ir.ui.view" id="base_extend">
         <field name="name">res.company.form</field>
         <field name="model">res.company</field>
         <field name="inherit_id" ref="base.view_company_form" />
         <field name="arch" type="xml">
             <xpath expr="/form/sheet/div[2]/button[@name='51']" position="after">
                  <button name="%(preview_report_internal)d" string="Preview internal" type="action"/> 
-                 <button name="%(preview_report_apaisado)d" string="Preview apaisado" type="action"/> 
+                 <button name="%(preview_report_apaisado)d" string="Preview ledger" type="action"/> 
+                 <button name="%(preview_report_shipping)d" string="Preview shipping" type="action"/> 
                  <button name="%(preview_report_webkit)d" string="Preview webkit" type="action"/>                          
             </xpath>
         	<xpath expr="/form/sheet/notebook/page[@string='General Information']/group[1]/group[2]/field[@name='company_registry']" position="after">        
 		        <field name="registry_mercantil"/>
 		        <field name="lpd"/>
+		        <field name="footer1"/>
+		        <field name="footer2"/>
+		        <field name="footer3"/>
+		        
        		</xpath>
-            
+       		<xpath expr="/form/sheet/notebook/page[@string='Header/Footer']/field[@name='rml_header']" position="after">       
+		        <label for="rml_header4"/>
+                <field name="rml_header4"/>
+       		</xpath>
+    	
         </field>
         
     </record>  

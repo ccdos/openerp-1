@@ -1,10 +1,12 @@
 <?xml version="1.0"?>
 <document filename="Delivery Order.pdf">
+
   <template title="Delivery Order" author="OpenERP S.A.(sales@openerp.com)" allowSplitting="20">
     <pageTemplate id="first">
       <frame id="first" x1="30.0" y1="27.0" width="508" height="815"/>
     </pageTemplate>
   </template>
+  
   <stylesheet>
     <blockTableStyle id="Standard_Outline">
       <blockAlignment value="LEFT"/>
@@ -13,6 +15,10 @@
     <blockTableStyle id="Tableau1">
       <blockAlignment value="LEFT"/>
       <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Tableau2">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="BOTTOM"/>
     </blockTableStyle>
     <blockTableStyle id="Table1">
       <blockAlignment value="LEFT"/>
@@ -68,6 +74,7 @@
       <lineStyle kind="LINEBELOW" colorName="#666666" start="0,-1" stop="0,-1"/>
       <lineStyle kind="LINEBELOW" colorName="#666666" start="1,-1" stop="1,-1"/>
       <lineStyle kind="LINEBELOW" colorName="#666666" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#666666" start="3,-1" stop="3,-1"/>
     </blockTableStyle>
     <blockTableStyle id="Table4">
       <blockAlignment value="LEFT"/>
@@ -75,6 +82,7 @@
       <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="0,-1" stop="0,-1"/>
       <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="1,-1" stop="1,-1"/>
       <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="3,-1" stop="3,-1"/>
     </blockTableStyle>
     <initialize>
       <paraStyle name="all" alignment="justify"/>
@@ -112,8 +120,10 @@
     <paraStyle name="terp_default_Right_9_Bold" fontName="Helvetica-Bold" fontSize="9.0" leading="11" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
     <images/>
   </stylesheet>
+  
   <story>
   <pto>
+  
   <pto_header>
     <blockTable colWidths="370.0,85.0,82.0" repeatRows="1" style="Table3">
       <tr>
@@ -129,6 +139,7 @@
       </tr>
     </blockTable>
   </pto_header>
+  
     <para style="terp_default_9">[[repeatIn(objects,'o')]]</para>
     <para style="terp_default_8">
       <font color="white"> </font>
@@ -142,15 +153,18 @@
           <para style="terp_default_9">[[ o.sale_id and o.sale_id.partner_invoice_id and display_address(o.sale_id.partner_invoice_id) ]]</para>
         </td>
         <td>
-          <para style="terp_default_9">[[ o.partner_id and o.partner_id and o.partner_id.name or '' ]]</para>
-          <para style="terp_default_9">[[ o.partner_id and o.partner_id and display_address(o.partner_id) ]]</para>
+          <para style="terp_default_Bold_9">Transport</para>
+          <para style="terp_default_9">[[ o.carrier_id.partner_id.comment or '' ]]</para>
         </td>
       </tr>
     </blockTable>
-    <para style="terp_header">Delivery Order : [[ o.name ]]</para>
+    
+    
+    <para style="terp_header">Albarán Nº [[ o.name ]]</para>
     <para style="terp_default_8">
       <font color="white"> </font>
     </para>
+    
      <blockTable colWidths="86.0,83.0,83.0,83.0,83.0,83.0" style="Table1">
       <tr>
         <td>
@@ -166,13 +180,14 @@
           <para style="terp_tblheader_General_Centre">Delivery Date</para>
         </td>
         <td>
-          <para style="terp_tblheader_General_Centre">Customer Ref.</para>
+          <para style="terp_tblheader_General_Centre">Customer Code</para>
         </td>
         <td>
           <para style="terp_tblheader_General_Centre">Vat</para>
         </td>
       </tr>
     </blockTable>
+    
     <blockTable colWidths="86.0,83.0,83.0,83.0,83.0,83.0" style="Table2">
       <tr>
         <td>
@@ -195,9 +210,11 @@
         </td>
       </tr>
     </blockTable>
+    
     <para style="Standard">
       <font color="white"> </font>
     </para>
+    
     <blockTable colWidths="270.0,85.0,85.0,82.0" repeatRows="1" style="Table3">
       <tr>
         <td>
@@ -214,6 +231,7 @@
         </td>
       </tr>
     </blockTable>
+    
     <section>
       <para style="terp_default_1">[[repeatIn(o.move_lines,'line')]]</para>
       <blockTable colWidths="270.0,85.0,85.0,83.0" style="Table4">
@@ -222,10 +240,10 @@
             <para style="terp_default_9">[[line.product_id.code ]] [[ line.product_id and line.product_id.name or '']]</para>
           </td>
           <td>
-            <para style="terp_default_9"> [[ line.product_id.product_code ]]</para>
+            <para style="terp_default_9"> [[ line.product_customer_code ]]</para>
           </td>
           <td>
-            <para style="terp_default_Centre_9">[[ (line.prodlot_id and (line.prodlot_id.name + (line.prodlot_id.ref and ('/' + line.prodlot_id.ref) or ''))) or ' ' ]]</para>
+            <para style="terp_default_Centre_9">[[ (line.prodlot_id and (line.prodlot_id.prefix + (line.prodlot_id.name and ('/' + line.prodlot_id.name) or ''))) or ' ' ]]</para>
           </td>
           <td>
             <para style="terp_default_Right_9">[[ formatLang(line.product_qty) ]] [[ line.product_uom and line.product_uom.name ]]</para>
@@ -236,6 +254,8 @@
         <font color="white"> </font>
       </para>
     </section>
+    
   </pto>
+  
   </story>
 </document>

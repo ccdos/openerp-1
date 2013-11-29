@@ -6,6 +6,7 @@
             <field name="wkf_id" ref="procurement.wkf_procurement"/>
             <field name="name">confirm_mto</field>
             <field name="split_mode">OR</field>
+            <field name="join_mode">XOR</field>
         </record>
     	
     </data>

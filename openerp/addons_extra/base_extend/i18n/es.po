@@ -1,13 +1,13 @@
 # Translation of OpenERP Server.
 # This file contains the translation of the following modules:
-#	* partner_sequence_unify
+#	* base_extend
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-18 12:43+0000\n"
-"PO-Revision-Date: 2013-11-18 13:36+0000\n"
+"POT-Creation-Date: 2013-11-28 23:17+0000\n"
+"PO-Revision-Date: 2013-11-28 23:17+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,11 +16,77 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: base_extend
-#: field:res.company,registry_mercantil:0
-msgid "registry mercantil"
-msgstr "Registro Mercantil"
+#: view:res.company:0
+msgid "Preview webkit"
+msgstr "Previsualizar cabecera Webkit"
+
+#. module: base_extend
+#: model:ir.actions.report.xml,name:base_extend.preview_report_webkit
+msgid "Preview Report Webkit"
+msgstr "Previsualizar cabecera Webkit"
+
+#. module: base_extend
+#: view:res.company:0
+msgid "Preview ledger"
+msgstr "Previsualizar cabecera apaisado"
+
+#. module: base_extend
+#: model:ir.actions.report.xml,name:base_extend.preview_report_apaisado
+msgid "Preview Report Apaisado"
+msgstr "Preview cabecera apaisado"
+
+#. module: base_extend
+#: model:ir.model,name:base_extend.model_res_company
+msgid "Companies"
+msgstr "Compañías"
 
 #. module: base_extend
 #: field:res.company,lpd:0
 msgid "data protection law"
 msgstr "Ley de protección de datos"
+
+#. module: base_extend
+#: model:ir.actions.report.xml,name:base_extend.preview_report_shipping
+msgid "Preview Report Shipping"
+msgstr "Previsualizar cabecera entrega"
+
+#. module: base_extend
+#: field:res.company,footer1:0
+msgid "footer 1"
+msgstr "pie de página 1"
+
+#. module: base_extend
+#: field:res.company,footer3:0
+msgid "footer 3"
+msgstr "pie de página 3"
+
+#. module: base_extend
+#: field:res.company,footer2:0
+msgid "footer 2"
+msgstr "pie de página 2"
+
+#. module: base_extend
+#: view:res.company:0
+msgid "Preview internal"
+msgstr "Previsualizar cabecera interna"
+
+#. module: base_extend
+#: model:ir.actions.report.xml,name:base_extend.preview_report_internal
+msgid "Preview Report Internal"
+msgstr "Previsualizar cabecera interna"
+
+#. module: base_extend
+#: field:res.company,registry_mercantil:0
+msgid "registry mercantil"
+msgstr "Registro Mercantil"
+
+#. module: base_extend
+#: view:res.company:0
+msgid "Preview shipping"
+msgstr "Previsualizar cabecera entrega"
+
+#. module: base_extend
+#: field:res.company,rml_header4:0
+msgid "RML Header Shipping"
+msgstr "Cabecera entrega RML"
+
