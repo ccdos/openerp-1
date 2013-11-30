@@ -24,14 +24,12 @@ from openerp.report import report_sxw
 from openerp.osv import osv
 from openerp import pooler
 
-class purchase_order_resume(report_sxw.rml_parse):
+class order(report_sxw.rml_parse):
     def __init__(self, cr, uid, name, context):
-        super(purchase_order_resume, self).__init__(cr, uid, name, context=context)
-        self.localcontext.update({
-            'time': time,
-            'user': self.pool.get('res.users').browse(cr, uid, uid, context)
-        })
-report_sxw.report_sxw('report.purchase.order_resume','purchase.order','addons/purchase_extend/report/purchase_order_resume.rml',parser=purchase_order_resume, header="internal")
+        super(order, self).__init__(cr, uid, name, context=context)
+        self.localcontext.update({'time': time})
+
+report_sxw.report_sxw('report.purchase.order_valued','purchase.order','addons/purchase_extend/report/order.rml',header="internal")
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
 

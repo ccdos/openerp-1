@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-20 12:28+0000\n"
-"PO-Revision-Date: 2013-11-20 12:28+0000\n"
+"POT-Creation-Date: 2013-11-29 09:22+0000\n"
+"PO-Revision-Date: 2013-11-29 09:22+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,88 +15,103 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: report:purchase.order_resume:0
 #. module: purchase_extend
+#: report:purchase.order_valued:0
 msgid "Our Order Reference"
 msgstr "Our Order Reference"
 
-#: report:purchase.order_resume:0
 #. module: purchase_extend
+#: report:purchase.order_valued:0
 msgid "Description"
 msgstr "Description"
 
-#: report:purchase.order_resume:0
 #. module: purchase_extend
+#: report:purchase.order_valued:0
 msgid "Your Order Reference"
 msgstr "Your Order Reference"
 
-#: report:purchase.order_resume:0
 #. module: purchase_extend
+#: report:purchase.order_valued:0
 msgid "Purchase Order Confirmation N°"
 msgstr "Purchase Order Confirmation N°"
 
-#: report:purchase.order_resume:0
 #. module: purchase_extend
+#: report:purchase.order_valued:0
 msgid "TIN :"
 msgstr "TIN :"
 
-#: report:purchase.order_resume:0
 #. module: purchase_extend
+#: model:ir.actions.report.xml,name:purchase_extend.report_purchase_order_valued
+msgid "Purchase Order Valued"
+msgstr "Purchase Order Valued"
+
+#. module: purchase_extend
+#: report:purchase.order_valued:0
+msgid "Taxes"
+msgstr "Taxes"
+
+#. module: purchase_extend
+#: report:purchase.order_valued:0
 msgid "Shipping address :"
 msgstr "Shipping address :"
 
-#: report:purchase.order_resume:0
 #. module: purchase_extend
+#: report:purchase.order_valued:0
 msgid "Order Date"
 msgstr "Order Date"
 
-#: report:purchase.order_resume:0
 #. module: purchase_extend
+#: report:purchase.order_valued:0
 msgid "Qty"
 msgstr "Qty"
 
-#: report:purchase.order_resume:0
 #. module: purchase_extend
-msgid "Date Req."
-msgstr "Date Req."
-
-#: report:purchase.order_resume:0
-#. module: purchase_extend
-msgid "Fax :"
-msgstr "Fax :"
-
-#: report:purchase.order_resume:0
-#. module: purchase_extend
-msgid "Request for Quotation N°"
-msgstr "Request for Quotation N°"
-
-#: report:purchase.order_resume:0
-#. module: purchase_extend
-msgid "Tel :"
-msgstr "Tel :"
-
-#: report:purchase.order_resume:0
-#. module: purchase_extend
+#: report:purchase.order_valued:0
 msgid "Validated By"
 msgstr "Validated By"
 
-#: model:ir.actions.report.xml,name:purchase_extend.report_purchase_order_resume
 #. module: purchase_extend
-msgid "Purchase Order Resume"
-msgstr "Purchase Order Resume"
+#: report:purchase.order_valued:0
+msgid "Unit Price"
+msgstr "Unit Price"
 
-#: report:purchase.order_resume:0
 #. module: purchase_extend
-msgid "You can contact"
-msgstr "You can contact"
+#: report:purchase.order_valued:0
+msgid "Net Total :"
+msgstr "Net Total :"
 
-#: report:purchase.order_resume:0
 #. module: purchase_extend
-msgid "or by phone"
-msgstr "or by phone"
+#: report:purchase.order_valued:0
+msgid "Date Req."
+msgstr "Date Req."
 
-#: report:purchase.order_resume:0
 #. module: purchase_extend
-msgid "by mail"
-msgstr "by mail"
+#: report:purchase.order_valued:0
+msgid "Fax :"
+msgstr "Fax :"
+
+#. module: purchase_extend
+#: report:purchase.order_valued:0
+msgid "Tel :"
+msgstr "Tel :"
+
+#. module: purchase_extend
+#: report:purchase.order_valued:0
+msgid "Net Price"
+msgstr "Net Price"
+
+#. module: purchase_extend
+#: report:purchase.order_valued:0
+msgid "Total :"
+msgstr "Total :"
+
+#. module: purchase_extend
+#: report:purchase.order_valued:0
+msgid "Taxes :"
+msgstr "Taxes :"
+
+#. module: purchase_extend
+#: report:purchase.order_valued:0
+msgid "Request for Quotation N°"
+msgstr "Request for Quotation N°"
 

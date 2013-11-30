@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <report auto="False" id="report_purchase_order_resume" model="purchase.order" 
-                name="purchase.order_resume" rml="purchase_extend/report/purchase_order_resume.rml"
-                string="Purchase Order Resume"/>      
+        <report auto="False" 
+        		id="report_purchase_order_valued" 
+        		model="purchase.order" 
+                name="purchase.order_valued" 
+                rml="purchase_extend/report/order.rml"
+                string="Purchase Order Valued"/> 
+        <report auto="False" 
+        		id="purchase.report_purchase_order" 
+        		model="purchase.order"
+                name="purchase.order_extend" 
+                rml="purchase_extend/report/purchase_order.rml"
+                usage="default" 
+                string="Purchase Order"/>     
     </data>
 </openerp>
