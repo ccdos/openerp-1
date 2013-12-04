@@ -61,6 +61,11 @@ msgstr "Referencia cliente"
 
 #. module: delivery_extend
 #: report:stock.picking_extend:0
+msgid "Ref. Customer "
+msgstr "Referencia cliente"
+
+#. module: delivery_extend
+#: report:stock.picking_extend:0
 msgid "Customer Code"
 msgstr "Código Cliente"
 
@@ -83,3 +88,36 @@ msgstr "Fecha"
 #: report:stock.picking_extend:0
 msgid "Order Ref."
 msgstr "Nº Albarán"
+
+#. module: delivery_extend
+#: report:stock.picking_extend:0
+msgid "Ref. Customer"
+msgstr "Referencia cliente"
+
+#. module: delivery_extend
+#: report:stock.picking_extend:0
+msgid "Seals first"
+msgstr "Precinto inicial"
+
+#. module: delivery_extend
+#: report:stock.picking_extend:0
+msgid "Seals last"
+msgstr "Precinto final"
+
+#. module: delivery_extend
+#: report:stock.picking_extend:0
+msgid "Gross weight"
+msgstr "Peso bruto"
+
+#. module: delivery_extend
+#: report:stock.picking_extend:0
+msgid "Tare"
+msgstr "Tara"
+
+#. module: delivery_extend
+#: report:stock.picking_extend:0
+msgid "Net weight"
+msgstr "Peso neto"
+
+
+

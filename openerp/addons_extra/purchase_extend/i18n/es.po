@@ -67,7 +67,7 @@ msgstr "Cantidad"
 
 #. module: purchase_extend
 #: report:purchase.order_valued:0
-msgid "Validated By"
+msgid "Validated By "
 msgstr "Validado por"
 
 #. module: purchase_extend
@@ -114,4 +114,82 @@ msgstr "Iva :"
 #: report:purchase.order_valued:0
 msgid "Request for Quotation N°"
 msgstr "Oferta N°"
+
+
+#. module: purchase_extend
+#: report:purchase.order_extend:0
+msgid "or by phone"
+msgstr "o por telefono"
+
+#. module: purchase_extend
+#: report:purchase.order_extend:0
+msgid "Shipping address :"
+msgstr "Dirección de envío :"
+
+#. module: purchase_extend
+#: report:purchase.order_extend:0
+msgid "Date Req."
+msgstr "Fecha envío"
+
+#. module: purchase_extend
+#: report:purchase.order_extend:0
+msgid "by mail"
+msgstr "por mail"
+
+#. module: purchase_extend
+#: report:purchase.order_extend:0
+msgid "Order Date"
+msgstr "Fecha pedido"
+
+#. module: purchase_extend
+#: report:purchase.order_extend:0
+#: report:purchase.quotation:0
+msgid "Qty"
+msgstr "Cantidad"
+
+#. module: purchase
+#: report:purchase.order_extend:0
+msgid "You can contact"
+msgstr "Puede contactar con"
+
+#. module: purchase_extend
+#: report:purchase.order_extend:0
+msgid "TIN :"
+msgstr "IVA :"
+
+#. module: purchase_extend
+#: report:purchase.order_extend:0
+msgid "Fax :"
+msgstr "Fax :"
+
+
+#. module: purchase_extend
+#: report:purchase.order_extend:0
+msgid "Our Order Reference"
+msgstr "Nuestra pedido Nº"
+
+#. module: purchase_extend
+#: report:purchase.order_extend:0
+msgid "Request for Quotation N°"
+msgstr "Nuestro presupuesto Nº"
+
+#. module: purchase_extend
+#: report:purchase.order_extend:0
+msgid "Description"
+msgstr "Descripción"
+
+#. module: purchase_extend
+#: report:purchase.order_extend:0
+msgid "Your Order Reference"
+msgstr "Su referencia pedido"
+
+#. module: purchase_extend
+#: report:purchase.order_extend:0
+msgid "Purchase Order Confirmation N°"
+msgstr "Pedido de compras Nº"
+
+#. module: purchase_extend
+#: report:purchase.order_extend:0
+msgid "Validated By"
+msgstr "Validado por"
 

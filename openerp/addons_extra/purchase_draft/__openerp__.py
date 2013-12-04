@@ -21,24 +21,31 @@
 #
 ##############################################################################
 {
-    'name': 'Stock Draft',
+    'name': 'Purchase Draft',
     'version': '1.0',
     'author': 'jmesteve',
-    'category': 'Warehouse Management',    
+    'category': 'Purchase Management',    
     'description': """
-        [ENG] Stock pickings in state done,cancel,confirmed,assigned set to Draft.
+        [ENG] Purchse order in state Done or Cancel set to Draft.
     """,
     'website': 'https://github.com/jmesteve',
     'license': 'AGPL-3',
     'images': [],
-    'depends' : ['stock_draft_invoice'],
-    'data': ['stock_view.xml',
-             'security/stock_draft_security.xml'
-             ],
+    'depends' : ['purchase'],
+    'data': ['purchase_view.xml',
+             'security/purchase_draft_security.xml'],
     'demo': [],
     'installable': True,
     'application': True,
     'auto_install': False,
 }
+
+
+
+
+
+
+
+
 
 

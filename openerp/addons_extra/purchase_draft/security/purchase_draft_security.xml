@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<openerp>
+	<data>
+
+    	<record id="base.group_purchase_draft" model="res.groups">
+        	<field name="name">Purchase / Button set to draft</field>
+    	</record>
+
+	</data>
+</openerp>

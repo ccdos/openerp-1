@@ -33,7 +33,7 @@
     'images': [],
     'depends' : ['stock'],
     'data': ['stock_view.xml',
-             'account_invoice_view.xml',
+             'account_invoice_view.xml'
             ],
     'demo': [],
     'installable': True,

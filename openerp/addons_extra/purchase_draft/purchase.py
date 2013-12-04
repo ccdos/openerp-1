@@ -20,25 +20,25 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-{
-    'name': 'Stock Draft',
-    'version': '1.0',
-    'author': 'jmesteve',
-    'category': 'Warehouse Management',    
-    'description': """
-        [ENG] Stock pickings in state done,cancel,confirmed,assigned set to Draft.
-    """,
-    'website': 'https://github.com/jmesteve',
-    'license': 'AGPL-3',
-    'images': [],
-    'depends' : ['stock_draft_invoice'],
-    'data': ['stock_view.xml',
-             'security/stock_draft_security.xml'
-             ],
-    'demo': [],
-    'installable': True,
-    'application': True,
-    'auto_install': False,
-}
 
+from openerp.osv import fields, orm
+from openerp import netsvc
+from openerp.tools.translate import _
+
+class purchase_order(orm.Model):
+    _inherit = "purchase.order"
+    
+    def action_cancel_draft(self, cr, uid, ids, *args):
+        if not len(ids):
+            return False
+        cr.execute('select id from purchase_order_line where order_id IN %s and state=%s', (tuple(ids), 'cancel'))
+        line_ids = map(lambda x: x[0], cr.fetchall())
+        self.write(cr, uid, ids, {'state': 'draft', 'invoice_ids': [], 'shipped': 0})
+        self.pool.get('purchase.order.line').write(cr, uid, line_ids, {'invoiced': False, 'state': 'draft', 'invoice_lines': [(6, 0, [])]})
+        wf_service = netsvc.LocalService("workflow")
+        for inv_id in ids:
+            
+            wf_service.trg_delete(uid, 'purchase.order', inv_id, cr)
+            wf_service.trg_create(uid, 'purchase.order', inv_id, cr)
+        return True
 

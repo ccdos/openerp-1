@@ -20,25 +20,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-{
-    'name': 'Stock Draft',
-    'version': '1.0',
-    'author': 'jmesteve',
-    'category': 'Warehouse Management',    
-    'description': """
-        [ENG] Stock pickings in state done,cancel,confirmed,assigned set to Draft.
-    """,
-    'website': 'https://github.com/jmesteve',
-    'license': 'AGPL-3',
-    'images': [],
-    'depends' : ['stock_draft_invoice'],
-    'data': ['stock_view.xml',
-             'security/stock_draft_security.xml'
-             ],
-    'demo': [],
-    'installable': True,
-    'application': True,
-    'auto_install': False,
-}
 
+import purchase
 
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
