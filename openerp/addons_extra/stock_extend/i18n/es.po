@@ -16,12 +16,6 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: stock_extend
-#: field:stock.picking,weight_manual:0
-#: field:stock.picking.out,weight_manual:0
-msgid "weight"
-msgstr "Peso bruto"
-
-#. module: stock_extend
 #: field:stock.picking,tare:0
 #: field:stock.picking.out,tare:0
 msgid "tare"
@@ -39,11 +33,6 @@ msgstr "Precinto primero"
 msgid "Seal last"
 msgstr "Precinto último"
 
-#. module: stock_extend
-#: field:stock.picking,weight_net_manual:0
-#: field:stock.picking.out,weight_net_manual:0
-msgid "weight net"
-msgstr "Peso neto"
 
 #. module: stock_extend
 #: model:ir.model,name:stock_extend.model_stock_picking
