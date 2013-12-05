@@ -20,6 +20,22 @@ msgid "Carrier"
 msgstr "Transportista"
 
 #. module: delivery_extend
+#: field:stock.move,tare:0
+msgid "tare"
+msgstr "Tara"
+
+#. module: delivery_extend
+#: field:stock.move,seals_first:0
+msgid "Seal fist"
+msgstr "Precinto primero"
+
+#. module: delivery_extend
+#: field:stock.move,seals_last:0
+msgid "Seal last"
+msgstr "Precinto último"
+
+
+#. module: delivery_extend
 #: report:stock.picking_extend:0
 msgid "Quantity"
 msgstr "Cantidad"
@@ -119,5 +135,18 @@ msgstr "Tara"
 msgid "Net weight"
 msgstr "Peso neto"
 
+#. module: delivery_extend
+#: report:stock.picking_extend:0
+msgid "Seals"
+msgstr "Precintos"
 
+#. module: delivery_extend
+#: report:stock.picking_extend:0
+msgid "to"
+msgstr "al"
+
+#. module: delivery_extend
+#: report:stock.picking_extend:0
+msgid "from"
+msgstr "desde"
 
