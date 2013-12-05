@@ -80,6 +80,7 @@ class stock_picking(osv.osv):
         """
         carrier_obj = self.pool.get('delivery.carrier')
         grid_obj = self.pool.get('delivery.grid')
+        
         if not picking.carrier_id or \
             any(inv_line.product_id.id == picking.carrier_id.product_id.id
                 for inv_line in invoice.invoice_line):
