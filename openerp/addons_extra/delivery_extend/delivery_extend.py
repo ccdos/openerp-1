@@ -8,8 +8,4 @@ class delivery_carrier(osv.osv):
 class stock_picking(osv.osv):
     _inherit = 'stock.picking'
     def _prepare_shipping_invoice_line(self, cr, uid, picking, invoice, context=None):
-<<<<<<< HEAD
         return None
-=======
-        return None
->>>>>>> a28cf69686ff7bfcec9b5f78e79a0e0ee9ef4515
