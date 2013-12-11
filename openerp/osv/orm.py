@@ -4988,9 +4988,14 @@ class BaseModel(object):
         translation_records = []
         for field_name, field_def in fields.items():
             # we must recursively copy the translations for o2o and o2m
+#linea añadida
+            old_record, new_record = self.read(cr, uid, [old_id, new_id], [field_name], context=context)
+            
             if field_def['type'] == 'one2many':
                 target_obj = self.pool.get(field_def['relation'])
-                old_record, new_record = self.read(cr, uid, [old_id, new_id], [field_name], context=context)
+#linea borrada
+                #old_record, new_record = self.read(cr, uid, [old_id, new_id], [field_name], context=context)
+                
                 # here we rely on the order of the ids to match the translations
                 # as foreseen in copy_data()
                 old_children = sorted(old_record[field_name])
@@ -5009,7 +5014,14 @@ class BaseModel(object):
                             ('name', '=', trans_name),
                             ('res_id', '=', old_id)
                     ])
-                    translation_records.extend(trans_obj.read(cr, uid, trans_ids, context=context))
+#linea borrada
+                    #translation_records.extend(trans_obj.read(cr, uid, trans_ids, context=context))
+#lineas añadidas    
+                    records = trans_obj.read(cr, uid, trans_ids, context=context)
+                    #update new source name to avoid uniq constraint
+                    for record in records :
+                        record['source'] = new_record[field_name]
+                    translation_records.extend(records)
 
         for record in translation_records:
             del record['id']
