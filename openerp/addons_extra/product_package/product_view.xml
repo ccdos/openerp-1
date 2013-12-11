@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    	<record model="ir.ui.view" id="product_normal_form_view_extend">
+	        <field name="name">product.normal.form</field>
+	        <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+	        <field name="arch" type="xml">
+	            <group name="inventory" position="after">
+	            	<group name="Packages" string="Packages">
+	            	   <field name="package_qty"/>
+	            	   <field name="package_qty_available"/>
+	            	   <field name="package_virtual_available"/>
+                    </group>
+	            </group>
+	            
+	       	</field>
+       </record>   
+       <record model="ir.ui.view" id="product_product_tree_view_package">
+	        <field name="name">product.product.tree</field>
+	        <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_product_tree_view"/>
+	        <field name="arch" type="xml">
+	            <xpath expr="//field[@name='qty_available']" position="after">
+	            	<field name="package_qty_available"/>
+	            </xpath>
+	            <xpath expr="//field[@name='virtual_available']" position="after">
+	            	<field name="package_virtual_available"/>
+	            </xpath>
+	       	</field>
+       </record>   
+    </data>
+</openerp>
