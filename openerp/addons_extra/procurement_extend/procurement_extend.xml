@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-    <data noupdate="1">
+    <data>
      	
    		<record id="procurement.act_confirm_mto" model="workflow.activity">
             <field name="wkf_id" ref="procurement.wkf_procurement"/>
@@ -8,8 +8,18 @@
             <field name="split_mode">OR</field>
             <field name="join_mode">XOR</field>
         </record>
-    	
+        <menuitem action="procurement.procurement_action" id="menu_stock_procurement_order" parent="procurement.menu_stock_sched" sequence="50" groups="stock.group_stock_manager"/>
+    
+    	<record id="procurement_form_view_estend" model="ir.ui.view">
+            <field name="name">procurement.order.form</field>
+            <field name="model">procurement.order</field>
+            <field name="inherit_id" ref="procurement.procurement_form_view"/>
+            <field name="arch" type="xml">
+	            <xpath expr="//button[@name='button_cancel']" position="after">
+	            	<button name="action_revert_done" string="Reopen" type="object" icon="gtk-cancel" confirm="Are you sure you want to reopen this stock picking?"/>
+	            </xpath>
+	            
+	       	</field>
+        </record>   
     </data>
-		
-  
 </openerp>

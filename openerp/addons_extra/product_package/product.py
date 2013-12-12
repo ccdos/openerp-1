@@ -8,12 +8,18 @@ class product_product(osv.osv):
     def _calculate_package_available(self, cr, uid, ids, name, args, context=None):
         res = {}
         for r in self.browse(cr, uid, ids, context=context):
-            res[r.id] = float(r.qty_available /r.package_qty)
+            if r.package_qty == 0:
+                res[r.id] = 0.00
+            else:
+                res[r.id] = float(r.qty_available /r.package_qty)
         return res
     def _calculate_package_virtual(self, cr, uid, ids, name, args, context=None):
         res = {}
         for r in self.browse(cr, uid, ids, context=context):
-            res[r.id] = float(r.virtual_available /r.package_qty)
+            if r.package_qty == 0:
+                res[r.id] = 0.00
+            else:
+                res[r.id] = float(r.virtual_available /r.package_qty)
         return res
         
     _columns = {
