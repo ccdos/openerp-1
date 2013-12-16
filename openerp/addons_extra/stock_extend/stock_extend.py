@@ -4,7 +4,15 @@ import openerp.addons.decimal_precision as dp
 
 class stock_move(osv.osv):
     _inherit = 'stock.move'
-
+    
+    def weight_manual_change(self, cr, uid, ids,tare,weight_net):
+        res =  weight_net + tare
+        volume = float(weight_net/100.00)  
+        return {'value': {
+                'weight': res,
+                'volume': volume,
+                }}
+        
     def _cal_move_weight(self, cr, uid, ids, name, args, context=None):
         res = {}
         uom_obj = self.pool.get('product.uom')
@@ -148,7 +156,7 @@ class stock_picking_out(osv.osv):
                  'stock.picking': (lambda self, cr, uid, ids, c={}: ids, ['move_lines'], 20),
                  'stock.move': (_get_picking_line, ['product_id','product_qty','product_uom','product_uos_qty'], 20),
                  }),
-        'carrier_tracking_ref': fields.char('Carrier Tracking Ref', size=32),
+        'carrier_tracking_ref': fields.text('Carrier Tracking Ref'),
         'number_of_packages': fields.function(_cal_weight, type='integer', string='Number_of_packages',  multi='_cal_weight',
                   store={
                  'stock.picking': (lambda self, cr, uid, ids, c={}: ids, ['move_lines'], 20),
@@ -165,7 +173,7 @@ class stock_picking_in(osv.osv):
 
     def _get_picking_line(self, cr, uid, ids, context=None):
         return self.pool.get('stock.picking')._get_picking_line(cr, uid, ids, context=context)
-
+    
     _columns = {
         'volume': fields.function(_cal_weight, type='float', string='Volume', digits_compute= dp.get_precision('Stock Weight'), multi='_cal_weight',
                   store={

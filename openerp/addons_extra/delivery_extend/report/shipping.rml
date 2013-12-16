@@ -194,7 +194,7 @@
         </td>
         <td>
           <para style="terp_default_Bold_9">Transport</para>
-          <para style="terp_default_9">[[ o.carrier_id.partner_id.comment or '' ]]</para>
+          <para style="terp_default_9">[[ o.carrier_tracking_ref or o.carrier_id.partner_id.comment or '' ]]</para>
         </td>
       </tr>
     </blockTable>
