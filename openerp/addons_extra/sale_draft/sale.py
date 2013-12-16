@@ -31,7 +31,9 @@ from openerp.tools import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FO
 
 class sale_order(orm.Model):
     _inherit = "sale.order"
-    
+    _columns = {
+            'pricelist_id': fields.many2one('product.pricelist', 'Pricelist', required=True, readonly=True, states={'draft': [('readonly', False)],'progress': [('readonly', False)], 'sent': [('readonly', False)]}, help="Pricelist for current sales order."),
+    }
     def action_cancel_draft(self, cr, uid, ids, *args):
         if not len(ids):
             return False

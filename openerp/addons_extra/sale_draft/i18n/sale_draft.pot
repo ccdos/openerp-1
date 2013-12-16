@@ -25,3 +25,12 @@ msgstr "Reopen"
 msgid "Sales Order"
 msgstr "Sales Order"
 
+#. module: sale_draft
+#: view:sale.order:0
+msgid "Recalculate"
+msgstr "Recalculate"
+
+#. module: sale_draft
+#: model:ir.model,name:sale_draft.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Sales Order Line"
