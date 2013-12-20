@@ -31,7 +31,7 @@
     'website': 'https://github.com/jmesteve',
     'license': 'AGPL-3',
     'images': [],
-    'depends' : ['sale'],
+    'depends' : ['sale','sale_stock'],
     'data': ['sale_view.xml',
              'security/sale_draft_security.xml'],
     'demo': [],

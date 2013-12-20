@@ -46,9 +46,98 @@ class sale_order(orm.Model):
             wf_service.trg_delete(uid, 'sale.order', inv_id, cr)
             wf_service.trg_create(uid, 'sale.order', inv_id, cr)
         return True
+        
+    def _create_pickings_and_procurements(self, cr, uid, order, order_lines, picking_id=False, context=None):
+        """Create the required procurements to supply sales order lines, also connecting
+        the procurements to appropriate stock moves in order to bring the goods to the
+        sales order's requested location.
+
+        If ``picking_id`` is provided, the stock moves will be added to it, otherwise
+        a standard outgoing picking will be created to wrap the stock moves, as returned
+        by :meth:`~._prepare_order_picking`.
+
+        Modules that wish to customize the procurements or partition the stock moves over
+        multiple stock pickings may override this method and call ``super()`` with
+        different subsets of ``order_lines`` and/or preset ``picking_id`` values.
+
+        :param browse_record order: sales order to which the order lines belong
+        :param list(browse_record) order_lines: sales order line records to procure
+        :param int picking_id: optional ID of a stock picking to which the created stock moves
+                               will be added. A new picking will be created if ommitted.
+        :return: True
+        """
+        move_obj = self.pool.get('stock.move')
+        picking_obj = self.pool.get('stock.picking')
+        procurement_obj = self.pool.get('procurement.order')
+        proc_ids = []
+
+        for line in order_lines:
+            if line.state == 'done':
+                continue
+
+            date_planned = self._get_date_planned(cr, uid, order, line, order.date_order, context=context)
+
+            if line.product_id:
+                if line.product_id.type in ('product', 'consu'):
+                    if not picking_id:
+                        picking_id = picking_obj.create(cr, uid, self._prepare_order_picking(cr, uid, order, context=context))
+                    move_id = move_obj.create(cr, uid, self._prepare_order_line_move(cr, uid, order, line, picking_id, date_planned, context=context))
+                else:
+                    # a service has no stock move
+                    move_id = False
+
+                proc_id = procurement_obj.create(cr, uid, self._prepare_order_line_procurement(cr, uid, order, line, move_id, order.date_order, context=context))
+                proc_ids.append(proc_id)
+                line.write({'procurement_id': proc_id})
+                self.ship_recreate(cr, uid, order, line, move_id, proc_id)
+
+        wf_service = netsvc.LocalService("workflow")
+        if picking_id:
+            wf_service.trg_validate(uid, 'stock.picking', picking_id, 'button_confirm', cr)
+        for proc_id in proc_ids:
+            wf_service.trg_validate(uid, 'procurement.order', proc_id, 'button_confirm', cr)
+
+        val = {}
+        if order.state == 'shipping_except':
+            val['state'] = 'progress'
+            val['shipped'] = False
+
+            if (order.order_policy == 'manual'):
+                for line in order.order_line:
+                    if (not line.invoiced) and (line.state not in ('cancel', 'draft')):
+                        val['state'] = 'manual'
+                        break
+        order.write(val)
+        return True
 
 class sale_order_line(orm.Model):
     _inherit = "sale.order.line"  
+    _columns = {
+            'date_delay': fields.date('Date Delay', required=True, readonly=False),
+            }
+    def change_date_delay(self, cr, uid, ids,date_delay, date_order, context=None):
+        date_delay_format = datetime.strptime(date_delay, DEFAULT_SERVER_DATE_FORMAT)
+        date_order_format = datetime.strptime(date_order, DEFAULT_SERVER_DATE_FORMAT)
+        date = ( date_delay_format - date_order_format).days
+        if date < 0:
+            msgalert = {'title':'Warning','message':'The delay date have to be greater than the order date.'}
+            return {'value': {
+            'delay': 0,
+            'date_delay':date_order,
+            },'warning':msgalert}
+            
+        return {'value': {
+            'delay': date,
+            }}
+        
+    def change_delay(self, cr, uid, ids, date_order, delay, context=None):
+        date_order_format = datetime.strptime(date_order, DEFAULT_SERVER_DATE_FORMAT)
+        date_planned = date_order_format + relativedelta(days=delay or 0.0)
+        date = date_planned.strftime(DEFAULT_SERVER_DATE_FORMAT)
+        return {'value': {
+            'date_delay': date,
+            }}
+        
     def action_recalculate(self, cr, uid, ids, *args):
         result = {}
         sale_obj = self.pool.get('sale.order')

@@ -34,3 +34,16 @@ msgstr "Recalculate"
 #: model:ir.model,name:sale_draft.model_sale_order_line
 msgid "Sales Order Line"
 msgstr "Sales Order Line"
+
+#. module: sale_draft
+#: field:sale.order.line,date_delay:0
+msgid "Date Delay"
+msgstr "Date Delay"
+
+#. module: sale_draft
+#: code:addons/sale_draft/sale.py:60
+#, python-format
+msgid ""
+"The delay date have to be greater than the order date."
+msgstr ""
+"The delay date have to be greater than the order date."

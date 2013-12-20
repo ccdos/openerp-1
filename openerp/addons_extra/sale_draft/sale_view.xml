@@ -11,9 +11,23 @@
                     <button name="action_cancel_draft" states="cancel,done" icon="gtk-cancel" string="Reopen" type="object" groups="base.group_sale_draft"/>
                 </button>
                 <xpath expr="//button[@string='Invoice']" position="after">
-                    <button name="action_recalculate"  icon="gtk-refresh" string="Recalculate" type="object" groups="base.group_sale_draft"/>
+                    <button name="action_recalculate"  icon="gtk-refresh" string="Recalculate" type="object" groups="base.group_sale_draft"/>  	
+                </xpath>
+                <xpath expr="//page[@string='Order Lines']/field[@name='order_line']/form[@string='Sales Order Lines']/group/group/field[@name='type']" position="before">                
+                     <field name="date_delay" on_change="change_date_delay(date_delay, parent.date_order,context)"/>
+                </xpath>         
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_order_form_inherit_draft">
+            <field name="name">sale.order.form.sale.stock</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_stock.view_order_form_inherit"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='delay']" position="attributes">
+                	<attribute name="on_change">change_delay(parent.date_order, delay, context)</attribute>
                 </xpath>
             </field>
         </record>
+            
     </data>
 </openerp>

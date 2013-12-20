@@ -19,3 +19,13 @@ msgstr ""
 #: selection:product.template,supply_method:0
 msgid "Manufacture External"
 msgstr "Manufacture External"
+
+#. module: procurement_extend
+#: model:ir.ui.menu,name:procurement_extend.menu_stock_procurement_order
+msgid "Procurement Orders"
+msgstr "Procurement Orders"
+
+#. module: procurement_extend
+#: model:ir.ui.menu,name:procurement_extend.menu_stock_procurement_order_pending
+msgid "Procurement Orders Pending"
+msgstr "Pending"
