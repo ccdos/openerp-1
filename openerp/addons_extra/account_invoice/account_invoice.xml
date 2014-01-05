@@ -12,7 +12,21 @@
             attachment="(object.state in ('open','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"
             attachment_use="True"
             usage="default"
-         />                            
+         /> 
+     
+     <record model="ir.ui.view" id="account_invoice_form">
+            <field name="name">account.invoice.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='discount']" position="before">
+                	<field name="base"/>
+                </xpath>
+                <xpath expr="//field[@name='amount_untaxed']" position="before">
+                	<field name="base_total"/>
+                </xpath>
+            </field>
+     </record>      
   </data>
 </openerp>
 

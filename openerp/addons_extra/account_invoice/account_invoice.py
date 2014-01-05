@@ -1,23 +1,56 @@
-
 from openerp.osv import fields, osv
+import openerp.addons.decimal_precision as dp
 
 class account_invoice(osv.osv):
     _inherit = 'account.invoice'
+    def _base(self, cr, uid, ids, name, args, context=None):
+        res = {}
+        for invoice in self.browse(cr, uid, ids, context=context):
+            res[invoice.id] = 0.0
+            for line in invoice.invoice_line:
+                res[invoice.id] += line.base
+        return res
+    
+    _columns = {
+                 'base_total': fields.function(_base, string='Base', type="float",
+             digits_compute= dp.get_precision('Account'), store=True),
+                }
     
     def invoice_print(self, cr, uid, ids, context=None):
-            '''
-            This function prints the invoice and mark it as sent, so that we can see more easily the next step of the workflow
-            '''
-            assert len(ids) == 1, 'This option should only be used for a single id at a time.'
-            self.write(cr, uid, ids, {'sent': True}, context=context)
-            datas = {
-                 'ids': ids,
-                 'model': 'account.invoice',
-                 'form': self.read(cr, uid, ids[0], context=context)
-            }
-            return {
-                'type': 'ir.actions.report.xml',
-                'report_name': 'account.account_invoice',
-                'datas': datas,
-                'nodestroy' : True
-            }
+        '''
+        This function prints the invoice and mark it as sent, so that we can see more easily the next step of the workflow
+        '''
+        assert len(ids) == 1, 'This option should only be used for a single id at a time.'
+        self.write(cr, uid, ids, {'sent': True}, context=context)
+        datas = {
+             'ids': ids,
+             'model': 'account.invoice',
+             'form': self.read(cr, uid, ids[0], context=context)
+        }
+        return {
+            'type': 'ir.actions.report.xml',
+            'report_name': 'account.account_invoice',
+            'datas': datas,
+            'nodestroy' : True
+        }
+account_invoice() 
+
+class account_invoice_line(osv.osv):
+    _inherit = "account.invoice.line"
+    def _base_line(self, cr, uid, ids, name, args, context=None):
+        res = {}
+        cur_obj = self.pool.get('res.currency')
+        for line in self.browse(cr, uid, ids):
+            price = line.price_unit * line.quantity
+            res[line.id] = price
+            if line.invoice_id:
+                cur = line.invoice_id.currency_id
+                res[line.id] = cur_obj.round(cr, uid, cur, res[line.id])
+        return res
+    _columns = {
+                 'base': fields.function(_base_line, string='Base', type="float",
+             digits_compute= dp.get_precision('Account'), store=True),
+                }
+    
+account_invoice_line()    
+        

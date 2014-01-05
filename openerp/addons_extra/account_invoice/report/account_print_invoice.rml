@@ -314,7 +314,7 @@
       <blockTable colWidths="90,120.0,100.0,100.0,120.0" style="Table2">
         <tr>
           <td>
-          	<para style="terp_default_8"><b>[[ formatLang(o.amount_total-o.amount_total, digits=get_digits(dp='Account'), currency_obj=o.currency_id) ]]</b></para>
+          	<para style="terp_default_8"><b>[[ formatLang(o.base_total-o.amount_untaxed, digits=get_digits(dp='Account'), currency_obj=o.currency_id) ]]</b></para>
           </td>
           <td>
             <para style="terp_default_Right_8">[[ formatLang(o.amount_untaxed, dp='Account', currency_obj=o.currency_id) ]]</para>
