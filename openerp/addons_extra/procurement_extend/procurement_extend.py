@@ -1,5 +1,7 @@
 from openerp.osv import fields, osv
-
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+from openerp.tools import  DEFAULT_SERVER_DATETIME_FORMAT
 
 class product_template(osv.osv):
     _inherit = "product.template"
@@ -11,6 +13,24 @@ class product_template(osv.osv):
 class procurement_order(osv.osv):
     _name = "procurement.order"
     _inherit = "procurement.order"
+    _columns ={
+               'date_order': fields.datetime('Order date', required=True, select=True),
+               }
+    
+    def _get_purchase_order_date(self, cr, uid, procurement, company, schedule_date, context=None):
+        """Return the datetime value to use as Order Date (``date_order``) for the
+           Purchase Order created to satisfy the given procurement.
+
+           :param browse_record procurement: the procurement for which a PO will be created.
+           :param browse_report company: the company to which the new PO will belong to.
+           :param datetime schedule_date: desired Scheduled Date for the Purchase Order lines.
+           :rtype: datetime
+           :return: the desired Order Date for the PO
+        """
+        procurement_date_order = datetime.strptime(procurement.date_order, DEFAULT_SERVER_DATETIME_FORMAT)
+        schedule_date = (procurement_date_order - relativedelta(days=company.po_lead))
+        return schedule_date    
+    
     def check_produce(self, cr, uid, ids, context=None):
             """ Checks product type.
             @return: True or False

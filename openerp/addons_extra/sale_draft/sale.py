@@ -46,7 +46,54 @@ class sale_order(orm.Model):
             wf_service.trg_delete(uid, 'sale.order', inv_id, cr)
             wf_service.trg_create(uid, 'sale.order', inv_id, cr)
         return True
-        
+    
+    def _prepare_order_line_procurement(self, cr, uid, order, line, move_id, date_planned, date_order, context=None):
+        return {
+            'name': line.name,
+            'origin': order.name,
+            'date_order': date_order,
+            'date_planned': date_planned,
+            'product_id': line.product_id.id,
+            'product_qty': line.product_uom_qty,
+            'product_uom': line.product_uom.id,
+            'product_uos_qty': (line.product_uos and line.product_uos_qty)\
+                    or line.product_uom_qty,
+            'product_uos': (line.product_uos and line.product_uos.id)\
+                    or line.product_uom.id,
+            'location_id': order.shop_id.warehouse_id.lot_stock_id.id,
+            'procure_method': line.type,
+            'move_id': move_id,
+            'company_id': order.company_id.id,
+            'note': line.name,
+            'property_ids': [(6, 0, [x.id for x in line.property_ids])],
+        }
+    
+    def _prepare_order_line_move(self, cr, uid, order, line, picking_id, date_planned, date_order, context=None):
+        location_id = order.shop_id.warehouse_id.lot_stock_id.id
+        output_id = order.shop_id.warehouse_id.lot_output_id.id
+        return {
+            'name': line.name,
+            'picking_id': picking_id,
+            'product_id': line.product_id.id,
+            'date': date_order,
+            'date_expected': date_planned,
+            'product_qty': line.product_uom_qty,
+            'product_uom': line.product_uom.id,
+            'product_uos_qty': (line.product_uos and line.product_uos_qty) or line.product_uom_qty,
+            'product_uos': (line.product_uos and line.product_uos.id)\
+                    or line.product_uom.id,
+            'product_packaging': line.product_packaging.id,
+            'partner_id': line.address_allotment_id.id or order.partner_shipping_id.id,
+            'location_id': location_id,
+            'location_dest_id': output_id,
+            'sale_line_id': line.id,
+            'tracking_id': False,
+            'state': 'draft',
+            #'state': 'waiting',
+            'company_id': order.company_id.id,
+            'price_unit': line.product_id.standard_price or 0.0
+        }
+            
     def _create_pickings_and_procurements(self, cr, uid, order, order_lines, picking_id=False, context=None):
         """Create the required procurements to supply sales order lines, also connecting
         the procurements to appropriate stock moves in order to bring the goods to the
@@ -81,12 +128,12 @@ class sale_order(orm.Model):
                 if line.product_id.type in ('product', 'consu'):
                     if not picking_id:
                         picking_id = picking_obj.create(cr, uid, self._prepare_order_picking(cr, uid, order, context=context))
-                    move_id = move_obj.create(cr, uid, self._prepare_order_line_move(cr, uid, order, line, picking_id, date_planned, context=context))
+                    move_id = move_obj.create(cr, uid, self._prepare_order_line_move(cr, uid, order, line, picking_id, date_planned,order.date_order, context=context))
                 else:
                     # a service has no stock move
                     move_id = False
 
-                proc_id = procurement_obj.create(cr, uid, self._prepare_order_line_procurement(cr, uid, order, line, move_id, order.date_order, context=context))
+                proc_id = procurement_obj.create(cr, uid, self._prepare_order_line_procurement(cr, uid, order, line, move_id, date_planned, order.date_order, context=context))
                 proc_ids.append(proc_id)
                 line.write({'procurement_id': proc_id})
                 self.ship_recreate(cr, uid, order, line, move_id, proc_id)

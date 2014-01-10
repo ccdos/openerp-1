@@ -32,7 +32,7 @@
     'website': 'https://github.com/jmesteve',
     'license': 'AGPL-3',
     'images': [],
-    'depends' : ['procurement'],
+    'depends' : ['procurement','purchase'],
     #'data': [],
     'data': ['procurement_extend.xml'],
     'demo': [],
