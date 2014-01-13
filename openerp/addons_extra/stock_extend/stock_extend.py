@@ -112,7 +112,7 @@ class stock_picking(osv.osv):
                  }),  
         'weight_uom_id': fields.many2one('product.uom', 'Unit of Measure', required=True,readonly="1",help="Unit of measurement for Weight",),
         'carrier_id':fields.many2one("delivery.carrier","Carrier"),
-        'carrier_tracking_ref': fields.char('Carrier Tracking Ref', size=32),
+        'carrier_tracking_ref': fields.text('Carrier Tracking Ref'),
         
         }
 
@@ -185,7 +185,7 @@ class stock_picking_in(osv.osv):
                  'stock.picking': (lambda self, cr, uid, ids, c={}: ids, ['move_lines'], 20),
                  'stock.move': (_get_picking_line, ['product_id','product_qty','product_uom','product_uos_qty'], 20),
                  }),  
-        'number_of_packages': fields.integer('Number of Packages'),
+        #'number_of_packages': fields.integer('Number of Packages'),
         'weight': fields.function(_cal_weight, type='float', string='Weight', digits_compute= dp.get_precision('Stock Weight'), multi='_cal_weight',
                 store={
                 'stock.picking': (lambda self, cr, uid, ids, c={}: ids, ['move_lines'], 20),
@@ -196,6 +196,7 @@ class stock_picking_in(osv.osv):
                 'stock.picking': (lambda self, cr, uid, ids, c={}: ids, ['move_lines'], 20),
                 'stock.move': (_get_picking_line, ['product_id','product_qty','product_uom','product_uos_qty'], 20),
                 }),
+        'carrier_tracking_ref': fields.text('Carrier Tracking Ref'),
         'number_of_packages': fields.function(_cal_weight, type='integer', string='Number_of_packages',  multi='_cal_weight',
                   store={
                  'stock.picking': (lambda self, cr, uid, ids, c={}: ids, ['move_lines'], 20),
