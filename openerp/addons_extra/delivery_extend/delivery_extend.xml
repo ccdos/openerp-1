@@ -9,5 +9,28 @@
             rml="delivery_extend/report/shipping.rml"
             string="Delivery order"
         />
+        <report
+            id="delivery.report_shipping_internal"
+            model="stock.picking"
+            name="stock.picking_internal_extend"
+            multi="True"
+            rml="delivery_extend/report/shipping_internal.rml"
+            string="Delivery order"
+        />
+        <record id="view_delivery_order_internal_inherit_stock" model="ir.ui.view">
+            <field name="name">stock.picking.form</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/header//button[@name='action_process']" position="after">
+                    <button name="%(delivery.report_shipping_internal)d" string="Print Delivery Order" states="confirmed,assigned" type="action"/>
+                    <button name="%(delivery.report_shipping_internal)d" string="Print Delivery Order" states="done" type="action" class="oe_highlight"/>
+                </xpath>
+                <xpath expr="//field[@name='origin']" position="after"> 
+                	<field name='carrier_id'/>
+                	<field name='carrier_tracking_ref'/>
+                </xpath>
+            </field>
+        </record>
     </data>
 </openerp>

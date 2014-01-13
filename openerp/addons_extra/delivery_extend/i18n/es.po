@@ -25,6 +25,11 @@ msgid "tare"
 msgstr "Tara"
 
 #. module: delivery_extend
+#: view:stock.picking:0
+msgid "Print Delivery Order"
+msgstr "Imprimir albarán de entrega"
+
+#. module: delivery_extend
 #: field:stock.move,seals_first:0
 msgid "Seal fist"
 msgstr "Precinto primero"
@@ -36,117 +41,146 @@ msgstr "Precinto último"
 
 
 #. module: delivery_extend
-#: report:stock.picking_extend:0
+#: report:stock.picking_extend:0 
+#: report:stock.picking_internal_extend:0
 msgid "Quantity"
 msgstr "Cantidad"
 
 #. module: delivery_extend
-#: report:stock.picking_extend:0
+#: report:stock.picking_extend:0 
+#: report:stock.picking_internal_extend:0
+msgid "Supplier address"
+msgstr "Dirección Depósito"
+
+#. module: delivery_extend
+#: report:stock.picking_extend:0 
+#: report:stock.picking_internal_extend:0
 msgid "Description"
 msgstr "Descripción"
 
 #. module: delivery_extend
-#: report:stock.picking_extend:0
+#: report:stock.picking_extend:0 
+#: report:stock.picking_internal_extend:0
 msgid "Transport"
 msgstr "Transporte"
 
 #. module: delivery_extend
-#: report:stock.picking_extend:0
+#: report:stock.picking_extend:0 
+#: report:stock.picking_internal_extend:0
 msgid "Invoiced to"
 msgstr "Facturado a"
 
 #. module: delivery_extend
-#: report:stock.picking_extend:0
+#: report:stock.picking_extend:0 
+#: report:stock.picking_internal_extend:0
 msgid "Delivery Order"
 msgstr "Albarán número"
 
 #. module: delivery_extend
-#: report:stock.picking_extend:0
+#: report:stock.picking_extend:0 
+#: report:stock.picking_internal_extend:0
 msgid "Lot"
 msgstr "Lote"
 
 #. module: delivery_extend
-#: report:stock.picking_extend:0
+#: report:stock.picking_extend:0 
+#: report:stock.picking_internal_extend:0
 msgid "Vat"
 msgstr "CIF"
 
 #. module: delivery_extend
-#: report:stock.picking_extend:0
+#: report:stock.picking_extend:0 
+#: report:stock.picking_internal_extend:0
 msgid "Customer Ref."
 msgstr "Referencia cliente"
 
 #. module: delivery_extend
-#: report:stock.picking_extend:0
+#: report:stock.picking_extend:0 
+#: report:stock.picking_internal_extend:0
 msgid "Ref. Customer "
 msgstr "Referencia cliente"
 
 #. module: delivery_extend
-#: report:stock.picking_extend:0
+#: report:stock.picking_extend:0 
+#: report:stock.picking_internal_extend:0
 msgid "Customer Code"
 msgstr "Código Cliente"
 
 #. module: delivery_extend
-#: report:stock.picking_extend:0
+#: report:stock.picking_extend:0 
+#: report:stock.picking_internal_extend:0
 msgid "Delivery Date"
 msgstr "Fecha Entrega"
 
 #. module: delivery_extend
-#: report:stock.picking_extend:0
+#: report:stock.picking_extend:0 
+#: report:stock.picking_internal_extend:0
 msgid "Shipping Date"
 msgstr "Fecha Envío"
 
 #. module: delivery_extend
-#: report:stock.picking_extend:0
+#: report:stock.picking_extend:0 
+#: report:stock.picking_internal_extend:0
 msgid "Order Date"
 msgstr "Fecha"
 
 #. module: delivery_extend
-#: report:stock.picking_extend:0
+#: report:stock.picking_extend:0 
+#: report:stock.picking_internal_extend:0
 msgid "Order Ref."
 msgstr "Nº Albarán"
 
 #. module: delivery_extend
-#: report:stock.picking_extend:0
+#: report:stock.picking_extend:0 
+#: report:stock.picking_internal_extend:0
 msgid "Ref. Customer"
 msgstr "Referencia cliente"
 
 #. module: delivery_extend
-#: report:stock.picking_extend:0
+#: report:stock.picking_extend:0 
+#: report:stock.picking_internal_extend:0
 msgid "Seals first"
 msgstr "Precinto inicial"
 
 #. module: delivery_extend
-#: report:stock.picking_extend:0
+#: report:stock.picking_extend:0 
+#: report:stock.picking_internal_extend:0
 msgid "Seals last"
 msgstr "Precinto final"
 
 #. module: delivery_extend
-#: report:stock.picking_extend:0
+#: report:stock.picking_extend:0 
+#: report:stock.picking_internal_extend:0
 msgid "Gross weight"
 msgstr "Peso bruto"
 
 #. module: delivery_extend
-#: report:stock.picking_extend:0
+#: report:stock.picking_extend:0 
+#: report:stock.picking_internal_extend:0
 msgid "Tare"
 msgstr "Tara"
 
 #. module: delivery_extend
-#: report:stock.picking_extend:0
+#: report:stock.picking_extend:0 
+#: report:stock.picking_internal_extend:0
 msgid "Net weight"
 msgstr "Peso neto"
 
 #. module: delivery_extend
-#: report:stock.picking_extend:0
+#: report:stock.picking_extend:0 
+#: report:stock.picking_internal_extend:0
 msgid "Seals"
 msgstr "Precintos"
 
 #. module: delivery_extend
-#: report:stock.picking_extend:0
+#: report:stock.picking_extend:0 
+#: report:stock.picking_internal_extend:0
 msgid "to"
 msgstr "al"
 
 #. module: delivery_extend
-#: report:stock.picking_extend:0
+#: report:stock.picking_extend:0 
+#: report:stock.picking_internal_extend:0
 msgid "from"
 msgstr "desde"
 
