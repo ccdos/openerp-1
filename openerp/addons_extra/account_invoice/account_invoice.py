@@ -16,6 +16,33 @@ class account_invoice(osv.osv):
              digits_compute= dp.get_precision('Account'), store=True),
                 }
     
+    def compute_invoice_totals(self, cr, uid, inv, company_currency, ref, invoice_move_lines, context=None):
+        if context is None:
+            context={}
+        total = 0
+        total_currency = 0
+        cur_obj = self.pool.get('res.currency')
+        for i in invoice_move_lines:
+            if inv.currency_id.id != company_currency:
+                context.update({'date': inv.date_invoice or time.strftime('%Y-%m-%d')})
+                i['currency_id'] = inv.currency_id.id
+                i['amount_currency'] = i['price']
+                i['price'] = cur_obj.compute(cr, uid, inv.currency_id.id,
+                        company_currency, i['price'],
+                        context=context)
+            else:
+                i['amount_currency'] = False
+                i['currency_id'] = False
+            i['ref'] = ref
+            if inv.type in ('out_invoice','in_refund','out_refund'):
+                total += i['price']
+                total_currency += i['amount_currency'] or i['price']
+                i['price'] = - i['price']
+            else:
+                total -= i['price']
+                total_currency -= i['amount_currency'] or i['price']
+        return total, total_currency, invoice_move_lines
+    
     def invoice_print(self, cr, uid, ids, context=None):
         '''
         This function prints the invoice and mark it as sent, so that we can see more easily the next step of the workflow
