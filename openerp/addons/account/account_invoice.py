@@ -676,7 +676,7 @@ class account_invoice(osv.osv):
       
 # cambio para poder eliminar las facturas validadas -> cambiado self.write
         #self.write(cr, uid, ids, {'state':'draft'})
-        self.write(cr, uid, ids, {'state':'cancel', 'internal_number':False ,'move_id':False})
+        self.write(cr, uid, ids, {'state':'draft', 'internal_number':False ,'move_id':False})
         
         wf_service = netsvc.LocalService("workflow")
         for inv_id in ids:
