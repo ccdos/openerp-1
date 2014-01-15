@@ -114,7 +114,7 @@ msgstr "Cantidad"
 #. module: account_invoice
 #: report:account.account_invoice:0
 msgid "Refund"
-msgstr "Reembolso"
+msgstr "Factura rectificativa"
 
 #. module: account_invoice
 #: report:account.account_invoice:0
@@ -149,7 +149,7 @@ msgstr "Fax :"
 #. module: account_invoice
 #: report:account.account_invoice:0
 msgid "Supplier Refund"
-msgstr "Devolución Reembolso"
+msgstr "Factura rectificativa"
 
 #. module: account_invoice
 #: report:account.account_invoice:0
