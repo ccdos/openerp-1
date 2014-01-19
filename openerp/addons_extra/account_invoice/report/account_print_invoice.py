@@ -31,7 +31,7 @@ class account_invoice(report_sxw.rml_parse):
 report_sxw.report_sxw(
     'report.account.account_invoice',
     'account.invoice',
-    'addons_extend/account_invoice/report/account_print_invoice.rml',
+    'addons_extra/account_invoice/report/account_print_invoice.rml',
     parser=account_invoice,
     header="external"
 )
