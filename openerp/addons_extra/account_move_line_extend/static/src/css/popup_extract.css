@@ -1,0 +1,74 @@
+table.oe_list_content{
+    table-layout: fixed;
+    border-spacing: 0px;
+	text-align:left; 
+    vertical-align:middle;
+	font-size:12px;
+	font-family:helvetica;
+	
+}
+.oe_list_record_selector{ 
+display: none;
+}
+.oe_list_header_columns th:first-child{ 
+display: none;
+}
+.oe_list_header_columns [data-id^="reconcile"]{
+	display: none;
+}
+
+table.oe_list_content tbody [data-field^="reconcile"]{
+	display: none;
+}
+
+table.oe_list_content tbody [data-field^="debit"]{
+	text-align:right; 
+}
+table.oe_list_content tbody [data-field^="credit"]{
+	text-align:right; 
+}
+table.oe_list_content tbody [data-field^="accumulated"]{
+	text-align:right; 
+}
+table.oe_list_content tbody [data-field^="accumulated"]{
+	text-align:right; 
+}
+table.oe_list_content tbody [data-field^="balance"]{
+	text-align:right; 
+}
+table.oe_list_content tbody [data-field^="date"]{
+	text-align:center; 
+}
+
+
+table.oe_list_content tr{
+	height:30px;
+	max-height:30px;
+}
+
+table.oe_list_content tbody td{
+    white-space: nowrap;
+	border: 1px solid #D8D8D8;
+    overflow: hidden;
+	line-height: 16px; 
+	max-width: 120px;
+	padding:2px;
+}
+
+table.oe_list_content .oe_list_header_columns{
+	background: #D8D8D8;
+	text-align:center; 
+	
+}
+table.oe_list_content .oe_list_header_columns th{
+	border: 1px solid black;
+	max-width: 60px;
+	height:40px;
+	overflow: hidden;
+	line-height: 16px; 
+	padding:2px;
+}
+table.oe_list_content tfoot tr{
+	background: #D8D8D8;
+	text-align:right; 
+}
