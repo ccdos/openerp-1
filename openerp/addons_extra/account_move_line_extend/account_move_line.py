@@ -1,6 +1,6 @@
 from openerp.osv import fields, osv, orm
 from openerp import pooler
-
+from openerp.tools.translate import _
 
 
 class account_move_line(osv.osv):
@@ -8,7 +8,20 @@ class account_move_line(osv.osv):
     #accumulated_global = 0
     #accumulateds = {}
     
-    
+    def _update_check(self, cr, uid, ids, context=None):
+        done = {}
+        for line in self.browse(cr, uid, ids, context=context):
+            err_msg = _('Move name (id): %s (%s)') % (line.move_id.name, str(line.move_id.id))
+            if line.move_id.state <> 'draft' and (not line.journal_id.entry_posted):
+                raise osv.except_osv(_('Error!'), _('You cannot do this modification on a confirmed entry. You can just change some non legal fields or you must unconfirm the journal entry first.\n%s.') % err_msg)
+            #if line.reconcile_id:
+            #    raise osv.except_osv(_('Error!'), _('You cannot do this modification on a reconciled entry. You can just change some non legal fields or you must unreconcile first.\n%s.') % err_msg)
+            t = (line.journal_id.id, line.period_id.id)
+            if t not in done:
+                self._update_journal_check(cr, uid, line.journal_id.id, line.period_id.id, context)
+                done[t] = True
+        return True
+        
     def _get_accumulated(self, cr, uid, ids,name, unknow_none, context=None):
         res = dict.fromkeys(ids, False)
         #accumulated = self.accumulated_global
