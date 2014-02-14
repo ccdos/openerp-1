@@ -39,7 +39,11 @@ class res_partner(orm.Model):
 # new register
     def create(self, cr, uid, vals, context=None):  
         if not 'ref' in vals or vals['ref'] == '/':
-                vals['ref'] = self.pool.get('ir.sequence').get(cr, uid, 'res.partner')                  
+            if vals['customer']:      
+                vals['ref'] = self.pool.get('ir.sequence').get(cr, uid, 'res.partner_customer')   
+            elif vals['supplier']:
+                vals['ref'] = self.pool.get('ir.sequence').get(cr, uid, 'res.partner_supplier')  
+                 
         return super(res_partner, self).create(cr, uid, vals, context)
 
 # edit register
@@ -52,7 +56,10 @@ class res_partner(orm.Model):
         super(res_partner, self).write(
             cr, uid, list(direct_write_ids), vals, context)
         for partner_id in partners_without_code:
-                vals['ref'] = self.pool.get('ir.sequence').get(cr, uid, 'res.partner')    
+            if not 'customer' in vals or vals['customer']: 
+                vals['ref'] = self.pool.get('ir.sequence').get(cr, uid, 'res.partner_customer')
+            elif not 'supplier' in vals or vals['supplier']:
+                vals['ref'] = self.pool.get('ir.sequence').get(cr, uid, 'res.partner_supplier')    
                 super(res_partner, self).write(cr, uid, partner_id, vals, context)
         return True
 

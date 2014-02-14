@@ -11,7 +11,6 @@ class product_template(osv.osv):
     }
     
 class procurement_order(osv.osv):
-    _name = "procurement.order"
     _inherit = "procurement.order"
     _columns ={
                'date_order': fields.datetime('Order date', required=True, select=True),
@@ -27,7 +26,10 @@ class procurement_order(osv.osv):
            :rtype: datetime
            :return: the desired Order Date for the PO
         """
-        procurement_date_order = datetime.strptime(procurement.date_order, DEFAULT_SERVER_DATETIME_FORMAT)
+        date = procurement.date_order
+        if date == False:
+            date = str(schedule_date)
+        procurement_date_order = datetime.strptime(date, DEFAULT_SERVER_DATETIME_FORMAT)
         schedule_date = (procurement_date_order - relativedelta(days=company.po_lead))
         return schedule_date    
     

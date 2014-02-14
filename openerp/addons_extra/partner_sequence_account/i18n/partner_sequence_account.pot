@@ -1,6 +1,6 @@
 # Translation of OpenERP Server.
 # This file contains the translation of the following modules:
-#	* partner_sequence_unify
+#	* partner_sequence_account
 #
 msgid ""
 msgstr ""
@@ -15,18 +15,18 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: partner_sequence_unify
-#: model:ir.model,name:partner_sequence_unify.model_res_partner
+#. module: partner_sequence_account
+#: model:ir.model,name:partner_sequence_account.model_res_partner
 msgid "Partner"
 msgstr ""
 
-#. module: partner_sequence_unify
+#. module: partner_sequence_account
 #: sql_constraint:res.partner:0
 msgid "The reference must be unique"
 msgstr ""
 
-#. module: partner_sequence_unify
-#: code:addons/partner_sequence_unify/partner_sequence_unify.py:62
+#. module: partner_sequence_account
+#: code:addons/partner_sequence_account/partner_sequence_account.py:62
 #, python-format
 msgid "-copy"
 msgstr ""

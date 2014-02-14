@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+	<openerp>
+		<data noupdate="0">
+			<record model="ir.sequence.type" id="seq_type_res_partner_supplier">
+				<field name="name">Partner Sequence Supplier</field>
+				<field name="code">res.partner_supplier</field>
+			</record>
+			<record model="ir.sequence" id="seq_res_partner_supplier">
+				<field name="name">Partner Sequence Supplier</field>
+				<field name="code">res.partner_supplier</field>
+				<field name="prefix">S</field>
+				<field eval="6" name="padding"/>
+			</record>
+		</data>
+		
+		<data noupdate="0">
+			<record model="ir.sequence.type" id="seq_type_res_partner_customer">
+				<field name="name">Partner Sequence Customer</field>
+				<field name="code">res.partner_customer</field>
+			</record>
+			<record model="ir.sequence" id="seq_res_partner_customer">
+				<field name="name">Partner Sequence Customer</field>
+				<field name="code">res.partner_customer</field>
+				<field name="prefix">C</field>
+				<field eval="6" name="padding"/>
+			</record>
+		</data>
+	</openerp>

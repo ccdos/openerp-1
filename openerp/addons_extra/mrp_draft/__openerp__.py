@@ -20,21 +20,32 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-
 {
-    'name': "Partner Sequence Unify",
-    'version': '0.1',
-    'category': 'Base',
-    'description': """
-        [ENG] Add automatic partner sequence on ref field. Suppliers and customers use the same sequence.
-    """,
+    'name': 'Mrp Draft',
+    'version': '1.0',
     'author': 'jmesteve',
+    'category': 'Manufacturing',    
+    'description': """
+        [ENG] Mrp order in state Done or Cancel set to Draft.
+    """,
     'website': 'https://github.com/jmesteve',
     'license': 'AGPL-3',
-    "depends": ['base'],
-    "data": [
-        'partner_sequence_unify.xml',
-    ],
-    "active": False,
-    "installable": True
+    'images': [],
+    'depends' : ['mrp'],
+    'data': ['mrp_view.xml',
+             'security/mrp_draft_security.xml'],
+    'demo': [],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
 }
+
+
+
+
+
+
+
+
+
+
