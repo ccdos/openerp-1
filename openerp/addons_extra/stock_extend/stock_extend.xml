@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-    	 <menuitem name="Virtual Production" id="menu_virtual_production_stock_form" action="stock.action_location_form"
+    	 <menuitem name="Locations" id="menu_locations_stock_form" action="stock.action_location_form"
             parent="stock.menu_stock_product" sequence="0"/>
+          
+         <record id="product_location_production_action" model="ir.actions.act_window">
+            <field name="name">product.product.tree</field>          
+            <field name="res_model">product.product</field>
+            <field name="context">{'location':7}</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="product.product_product_tree_view"/>
+         </record>   
+         <menuitem name="Stock Production" action="product_location_production_action" id="menu_stock_production_menu" parent="stock.menu_stock_product" sequence="0"/>
+         
          <report 
 	         id="stock.report_picking_list" 
 	         model="stock.picking" 

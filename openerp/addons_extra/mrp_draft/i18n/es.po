@@ -1,0 +1,52 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* mrp_draft
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-02-14 13:05+0000\n"
+"PO-Revision-Date: 2014-02-14 13:05+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mrp_draft
+#: view:mrp.production:0
+msgid "Done"
+msgstr "Terminar sin producir"
+
+#. module: mrp_draft
+#: view:mrp.production:0
+msgid "Ready"
+msgstr "forzar listo para fabricar"
+
+#. module: mrp_draft
+#: view:mrp.production:0
+msgid "Reopen"
+msgstr "Reabrir"
+
+#. module: mrp_draft
+#: view:mrp.production:0
+msgid "Are you sure you want to done this order?"
+msgstr "Está seguro de que quiere terminar la orden?"
+
+#. module: mrp_draft
+#: view:mrp.production:0
+msgid "Are you sure you want to reopen this order?"
+msgstr "Está seguro de que quiere reabrir la orden?"
+
+#. module: mrp_draft
+#: view:mrp.production:0
+msgid "Are you sure you want to ready this order?"
+msgstr "Está seguro de que quiere forzar la orden?"
+
+#. module: mrp_draft
+#: model:ir.model,name:mrp_draft.model_mrp_production
+msgid "Manufacturing Order"
+msgstr "Orden de producción"
+

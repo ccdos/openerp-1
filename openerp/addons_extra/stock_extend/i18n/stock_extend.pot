@@ -72,3 +72,12 @@ msgstr "Picking List"
 msgid "Delivery Orders"
 msgstr "Delivery Orders"
 
+#. module: stock_extend
+#: model:ir.ui.menu,name:stock_extend.menu_locations_stock_form
+msgid "Locations"
+msgstr "Locations"
+
+#. module: stock_extend
+#: model:ir.ui.menu,name:stock_extend.menu_stock_production_menu
+msgid "Stock Production"
+msgstr "Stock Production"

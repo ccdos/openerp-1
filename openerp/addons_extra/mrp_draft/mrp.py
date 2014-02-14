@@ -37,4 +37,22 @@ class mrp_production(orm.Model):
                 self.write(cr, uid, [reg.id], {'state': 'draft'})
                 return True
         return False
+    def action_done(self, cr, uid, ids, context=None):
+    
+        if not len(ids):
+            return False
+        for reg in self.browse(cr, uid, ids, context):
+            if reg.state in ("in_production"):
+                self.write(cr, uid, [reg.id], {'state': 'done'})
+                return True
+        return False
+    def action_ready(self, cr, uid, ids, context=None):
+    
+        if not len(ids):
+            return False
+        for reg in self.browse(cr, uid, ids, context):
+            if reg.state in ("draft"):
+                self.write(cr, uid, [reg.id], {'state': 'ready'})
+                return True
+        return False
 
