@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
+    	 <menuitem name="Virtual Production" id="menu_virtual_production_stock_form" action="stock.action_location_form"
+            parent="stock.menu_stock_product" sequence="0"/>
          <report 
 	         id="stock.report_picking_list" 
 	         model="stock.picking" 

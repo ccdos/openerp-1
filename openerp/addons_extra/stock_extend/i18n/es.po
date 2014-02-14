@@ -44,3 +44,7 @@ msgstr "Albarán"
 msgid "Delivery Orders"
 msgstr "Albaranes de salida"
 
+#. module: stock_extend
+#: model:ir.ui.menu,name:stock_extend.menu_virtual_production_stock_form
+msgid "Virtual Production"
+msgstr "Stock"

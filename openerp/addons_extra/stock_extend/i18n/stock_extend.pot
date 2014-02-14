@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-04 17:09+0000\n"
-"PO-Revision-Date: 2013-12-04 17:09+0000\n"
+"POT-Creation-Date: 2014-02-14 02:28+0000\n"
+"PO-Revision-Date: 2014-02-14 02:28+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,23 +16,51 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: stock_extend
+#: model:ir.ui.menu,name:stock_extend.menu_virtual_production_stock_form
+msgid "Virtual Production"
+msgstr "Virtual Production"
+
+#. module: stock_extend
+#: field:stock.picking.in,volume:0
+msgid "Volume"
+msgstr "Volume"
+
+#. module: stock_extend
+#: field:stock.picking.in,number_of_packages:0
+msgid "Number_of_packages"
+msgstr "Number_of_packages"
+
+#. module: stock_extend
+#: model:ir.model,name:stock_extend.model_stock_picking_in
+msgid "Incoming Shipments"
+msgstr "Incoming Shipments"
+
+#. module: stock_extend
+#: model:ir.model,name:stock_extend.model_stock_move
+msgid "Stock Move"
+msgstr "Stock Move"
+
+#. module: stock_extend
 #: field:stock.picking,tare:0
+#: field:stock.picking.in,tare:0
 #: field:stock.picking.out,tare:0
-msgid "tare"
+msgid "Tare"
 msgstr "Tare"
 
 #. module: stock_extend
-#: field:stock.picking,seals_first:0
-#: field:stock.picking.out,seals_first:0
+#: field:stock.move,seals_first:0
 msgid "Seal first"
 msgstr "Seal first"
 
 #. module: stock_extend
-#: field:stock.picking,seals_last:0
-#: field:stock.picking.out,seals_last:0
+#: field:stock.move,seals_last:0
 msgid "Seal last"
 msgstr "Seal last"
 
+#. module: stock_extend
+#: field:stock.move,tare:0
+msgid "tare"
+msgstr "tare"
 
 #. module: stock_extend
 #: model:ir.model,name:stock_extend.model_stock_picking
