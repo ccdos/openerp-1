@@ -50,6 +50,10 @@ class stock_move(osv.osv):
         'weight_uom_id': fields.many2one('product.uom', 'Unit of Measure', required=True,readonly="1",help="Unit of Measure (Unit of Measure) is the unit of measurement for Weight",),
         }
     
+    _defaults ={
+               'location_dest_id':7,
+               }
+    
 stock_move()
 
 class stock_picking(osv.osv):
