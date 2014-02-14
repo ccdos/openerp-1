@@ -5,6 +5,17 @@ import openerp.addons.decimal_precision as dp
 class stock_move(osv.osv):
     _inherit = 'stock.move'
     
+    def onchange_product_id(self, cr, uid, ids, product_id, context=None):
+        product_obj = self.pool.get('product.template')
+        product_obj = product_obj.browse(cr, uid, product_id, context=context)
+        location_dest_id = product_obj.property_stock_production.id
+        
+        return {
+                'value':{
+                         'location_dest_id':location_dest_id,
+                         }
+                }
+    
     def weight_manual_change(self, cr, uid, ids,tare,weight_net):
         res =  weight_net + tare
         volume = float(weight_net/100.00)  
@@ -50,9 +61,7 @@ class stock_move(osv.osv):
         'weight_uom_id': fields.many2one('product.uom', 'Unit of Measure', required=True,readonly="1",help="Unit of Measure (Unit of Measure) is the unit of measurement for Weight",),
         }
     
-    _defaults ={
-               'location_dest_id':7,
-               }
+ 
     
 stock_move()
 
@@ -207,4 +216,5 @@ class stock_picking_in(osv.osv):
                  'stock.move': (_get_picking_line, ['product_id','product_qty','product_uom','product_uos_qty'], 20),
                  }),  
         }
+ 
 stock_picking_in()
