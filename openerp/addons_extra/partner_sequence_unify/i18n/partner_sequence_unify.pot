@@ -1,0 +1,33 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* partner_sequence_unify
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-06-03 13:36+0000\n"
+"PO-Revision-Date: 2013-06-03 13:36+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: partner_sequence_unify
+#: model:ir.model,name:partner_sequence_unify.model_res_partner
+msgid "Partner"
+msgstr ""
+
+#. module: partner_sequence_unify
+#: sql_constraint:res.partner:0
+msgid "The reference must be unique"
+msgstr ""
+
+#. module: partner_sequence_unify
+#: code:addons/partner_sequence_unify/partner_sequence_unify.py:62
+#, python-format
+msgid "-copy"
+msgstr ""
+
