@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="mrp_set_to_draft_view">
+            <field name="name">mrp.set.to.draft</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+                <button name="button_cancel" position="before">
+                    <button name="button_action_revert_done" string="Reopen" type="object" icon="gtk-cancel" states="cancel,confirmed,in_production,picking_except,done" confirm="Are you sure you want to reopen this order?"/>
+                    <button name="button_action_done" string="Done" type="object" icon="gtk-ok" states="in_production" confirm="Are you sure you want to done this order?"/>
+                    <button name="button_action_ready" string="Ready" type="object" icon="gtk-ok" states="draft" confirm="Are you sure you want to ready this order?"/>
+                </button>
+            </field>
+        </record>
+    </data>
+</openerp>

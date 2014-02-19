@@ -21,19 +21,19 @@
 #
 ##############################################################################
 {
-    'name': 'Mrp Draft',
+    'name': 'Mrp Extend',
     'version': '1.0',
     'author': 'jmesteve',
     'category': 'Manufacturing',    
     'description': """
-        [ENG] Mrp order in state Done or Cancel set to Draft.
+        [ENG] Mrp order in state Done or Cancel set to Draft. And extend module.
     """,
     'website': 'https://github.com/jmesteve',
     'license': 'AGPL-3',
     'images': [],
     'depends' : ['mrp'],
     'data': ['mrp_view.xml',
-             'security/mrp_draft_security.xml'],
+             'security/mrp_security.xml'],
     'demo': [],
     'installable': True,
     'application': True,
