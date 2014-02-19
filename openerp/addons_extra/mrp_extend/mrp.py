@@ -25,6 +25,8 @@ from openerp.osv import fields, osv, orm
 from openerp import netsvc
 from openerp.tools.translate import _
 from openerp.tools import float_compare
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
 class mrp_production(osv.osv):
     _inherit = "mrp.production"
@@ -111,7 +113,7 @@ class mrp_production(osv.osv):
                 continue
             produced_qty += produced_product.product_qty
         
-        if production_mode in ['consume','consume_produce']:
+        if production_mode in ['consume','consume_produce','consume_done']:
             consumed_data = {}
 
             # Calculate already consumed qtys
@@ -173,10 +175,8 @@ class mrp_production(osv.osv):
                     raise osv.except_osv(_('Warning!'), _('You are going to produce total %s quantities of "%s".\nBut you can only produce up to total %s quantities.') % ((subproduct_factor * production_qty), prod_name, rest_qty))
                 if rest_qty > 0 :
                     stock_mov_obj.action_consume(cr, uid, [produce_product.id], (subproduct_factor * production_qty), context=context)
-        else:
-                
+        elif production_mode == 'consume_done':
             self.write(cr, uid, [production_id], {'state': 'done'})
-            
             ids = stock_mov_obj.search(cr,uid,[],0, None)
             for line in stock_mov_obj.browse(cr, uid, ids):
                 if line.name == production.name and line.product_id == production.product_id:
@@ -203,3 +203,87 @@ class mrp_production(osv.osv):
 
 mrp_production()
 
+class mrp_product_produce(osv.osv_memory):
+    _inherit = "mrp.product.produce"
+    _columns = {
+        'mode': fields.selection([('consume_produce', 'Consume & Produce'),
+                                  ('consume', 'Consume Only'),
+                                  ('consume_done', 'Consume & Done')
+                                  ], 'Mode', required=True,
+                                  help="'Consume only' mode will only consume the products with the quantity selected.\n"
+                                        "'Consume & Produce' mode will consume as well as produce the products with the quantity selected "
+                                        "and it will finish the production order when total ordered quantities are produced."),
+    }
+    _defaults = {
+         'mode': lambda *x: 'consume_done'
+    }
+    
+class procurement_order(osv.osv):
+    _inherit = 'procurement.order'    
+    def _src_id_default(self, cr, uid, ids, context=None):
+        try:
+            location_id = 7
+            product_obj = self.pool.get('stock.location')
+            product_obj = product_obj.browse(cr, uid, location_id, context=context)
+            name = product_obj.name
+            return location_id
+        except:
+            try:
+                location_model, location_id = self.pool.get('ir.model.data').get_object_reference(cr, uid, 'stock', 'stock_location_stock')
+                self.pool.get('stock.location').check_access_rule(cr, uid, [location_id], 'read', context=context)
+            except (orm.except_orm, ValueError):
+                location_id = False
+            return location_id
+    
+    def _dest_id_default(self, cr, uid, ids, context=None):
+        try:
+            location_id = 11
+            product_obj = self.pool.get('stock.location')
+            product_obj = product_obj.browse(cr, uid, location_id, context=context)
+            name = product_obj.name
+            return location_id
+        except:
+            try:
+                location_model, location_id = self.pool.get('ir.model.data').get_object_reference(cr, uid, 'stock', 'stock_location_stock')
+                self.pool.get('stock.location').check_access_rule(cr, uid, [location_id], 'read', context=context)
+            except (orm.except_orm, ValueError):
+                location_id = False
+            return location_id
+    
+    
+    def make_mo(self, cr, uid, ids, context=None):
+        """ Make Manufacturing(production) order from procurement
+        @return: New created Production Orders procurement wise 
+        """
+        res = {}
+        company = self.pool.get('res.users').browse(cr, uid, uid, context).company_id
+        production_obj = self.pool.get('mrp.production')
+        move_obj = self.pool.get('stock.move')
+        wf_service = netsvc.LocalService("workflow")
+        procurement_obj = self.pool.get('procurement.order')
+        for procurement in procurement_obj.browse(cr, uid, ids, context=context):
+            res_id = procurement.move_id.id
+            newdate = datetime.strptime(procurement.date_planned, '%Y-%m-%d %H:%M:%S') - relativedelta(days=procurement.product_id.produce_delay or 0.0)
+            newdate = newdate - relativedelta(days=company.manufacturing_lead)
+            produce_id = production_obj.create(cr, uid, {
+                'origin': procurement.origin,
+                'product_id': procurement.product_id.id,
+                'product_qty': procurement.product_qty,
+                'product_uom': procurement.product_uom.id,
+                'product_uos_qty': procurement.product_uos and procurement.product_uos_qty or False,
+                'product_uos': procurement.product_uos and procurement.product_uos.id or False,
+                'location_src_id': procurement_obj._src_id_default(cr, uid, ids, context),
+                'location_dest_id': procurement_obj._dest_id_default(cr, uid, ids, context),
+                'bom_id': procurement.bom_id and procurement.bom_id.id or False,
+                'date_planned': newdate.strftime('%Y-%m-%d %H:%M:%S'),
+                'move_prod_id': res_id,
+                'company_id': procurement.company_id.id,
+            })
+            
+            res[procurement.id] = produce_id
+            self.write(cr, uid, [procurement.id], {'state': 'running', 'production_id': produce_id})   
+            bom_result = production_obj.action_compute(cr, uid,
+                    [produce_id], properties=[x.id for x in procurement.property_ids])
+            #wf_service.trg_validate(uid, 'mrp.production', produce_id, 'button_confirm', cr)
+        self.production_order_create_note(cr, uid, ids, context=context)
+        return res

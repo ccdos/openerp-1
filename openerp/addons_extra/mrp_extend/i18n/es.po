@@ -1,6 +1,6 @@
 # Translation of OpenERP Server.
 # This file contains the translation of the following modules:
-#	* mrp_draft
+#	* mrp_extend
 #
 msgid ""
 msgstr ""
@@ -15,38 +15,42 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: mrp_draft
+#. module: mrp_extend
 #: view:mrp.production:0
 msgid "Done"
 msgstr "Terminar sin producir"
 
-#. module: mrp_draft
+#. module: mrp_extend
 #: view:mrp.production:0
 msgid "Ready"
 msgstr "forzar listo para fabricar"
 
-#. module: mrp_draft
+#. module: mrp_extend
 #: view:mrp.production:0
 msgid "Reopen"
 msgstr "Reabrir"
 
-#. module: mrp_draft
+#. module: mrp_extend
 #: view:mrp.production:0
 msgid "Are you sure you want to done this order?"
 msgstr "Está seguro de que quiere terminar la orden?"
 
-#. module: mrp_draft
+#. module: mrp_extend
 #: view:mrp.production:0
 msgid "Are you sure you want to reopen this order?"
 msgstr "Está seguro de que quiere reabrir la orden?"
 
-#. module: mrp_draft
+#. module: mrp_extend
 #: view:mrp.production:0
 msgid "Are you sure you want to ready this order?"
 msgstr "Está seguro de que quiere forzar la orden?"
 
-#. module: mrp_draft
-#: model:ir.model,name:mrp_draft.model_mrp_production
+#. module: mrp_extend
+#: model:ir.model,name:mrp_extend.model_mrp_production
 msgid "Manufacturing Order"
 msgstr "Orden de producción"
 
+#. module: mrp_extend
+#: selection:mrp.product.produce,mode:0
+msgid "Consume & Done"
+msgstr "Consumir y finalizar"

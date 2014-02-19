@@ -1,13 +1,13 @@
 # Translation of OpenERP Server.
 # This file contains the translation of the following modules:
-#	* mrp_draft
+#	* mrp_extend
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-14 13:05+0000\n"
-"PO-Revision-Date: 2014-02-14 13:05+0000\n"
+"POT-Creation-Date: 2014-02-19 22:04+0000\n"
+"PO-Revision-Date: 2014-02-19 22:04+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,28 +15,38 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: mrp_draft
-#: view:mrp.production:0
-msgid "Done"
-msgstr "Done"
-
-#. module: mrp_draft
-#: view:mrp.production:0
-msgid "Reopen"
-msgstr "Reopen"
-
-#. module: mrp_draft
-#: view:mrp.production:0
-msgid "Are you sure you want to done this order?"
-msgstr "Are you sure you want to done this order?"
-
-#. module: mrp_draft
+#. module: mrp_extend
 #: view:mrp.production:0
 msgid "Are you sure you want to reopen this order?"
 msgstr "Are you sure you want to reopen this order?"
 
-#. module: mrp_draft
-#: model:ir.model,name:mrp_draft.model_mrp_production
+#. module: mrp_extend
+#: view:mrp.production:0
+msgid "Are you sure you want to ready this order?"
+msgstr "Are you sure you want to ready this order?"
+
+#. module: mrp_extend
+#: model:ir.model,name:mrp_extend.model_mrp_production
 msgid "Manufacturing Order"
 msgstr "Manufacturing Order"
+
+#. module: mrp_extend
+#: view:mrp.production:0
+msgid "Reopen"
+msgstr "Reopen"
+
+#. module: mrp_extend
+#: view:mrp.production:0
+msgid "Done"
+msgstr "Done"
+
+#. module: mrp_extend
+#: view:mrp.production:0
+msgid "Ready"
+msgstr "Ready"
+
+#. module: mrp_extend
+#: view:mrp.production:0
+msgid "Are you sure you want to done this order?"
+msgstr "Are you sure you want to done this order?"
 
