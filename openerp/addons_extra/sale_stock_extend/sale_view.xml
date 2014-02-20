@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="sale_stock_extend_view">
+            <field name="name">sale.stock.extend</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <button name="cancel" position="after">
+                    <button name="action_procurement" states="procurement" icon="ARROW-DOWN" string="Procurement" type="object"/>
+                    <button name="action_procurement" states="progress,done" icon="ARROW-DOWN-GREY" string="Procurement" type="object"/>
+                    
+                    <button name="action_mrp" states="procurement_all,procurement_production" icon="ARROW-DOWN" string="Mrp" type="object"/>
+                    <button name="action_mrp" states="progress,done" icon="ARROW-DOWN-GREY" string="Mrp" type="object"/>
+                    
+                    <button name="action_purchase" states="procurement_all,procurement_purchase" icon="ARROW-DOWN" string="Purchase" type="object"/>
+                    <button name="action_purchase" states="progress,done" icon="ARROW-DOWN-GREY" string="Purchase" type="object"/>
+                    
+                    <button name="action_progress" states="procurement_all,procurement_purchase,procurement_production,procurement" icon="ARROW-RIGHT" string="Progress" type="object"/>
+                </button>
+            </field>
+        </record>
+    </data>
+</openerp>

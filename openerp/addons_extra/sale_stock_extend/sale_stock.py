@@ -28,19 +28,185 @@ class sale_order(orm.Model):
     _inherit = "sale.order"
     _columns = {
             'pricelist_id': fields.many2one('product.pricelist', 'Pricelist', required=True, readonly=True, states={'draft': [('readonly', False)],'progress': [('readonly', False)], 'sent': [('readonly', False)]}, help="Pricelist for current sales order."),
+            'state': fields.selection([
+            ('draft', 'Draft Quotation'),
+            ('sent', 'Quotation Sent'),
+            ('cancel', 'Cancelled'),
+            ('waiting_date', 'Waiting Schedule'),
+            ('procurement', 'Procurement'),
+            ('procurement_purchase', 'Procurement Purchase'),
+            ('procurement_production', 'Procurement Production'),
+            ('procurement_all', 'Procurement All'),
+            ('progress', 'Sales Order'),
+            ('manual', 'Sale to Invoice'),
+            ('invoice_except', 'Invoice Exception'),
+            ('done', 'Done'),
+            ], 'Status', readonly=True, track_visibility='onchange',
+            help="Gives the status of the quotation or sales order. \nThe exception status is automatically set when a cancel operation occurs in the processing of a document linked to the sales order. \nThe 'Waiting Schedule' status is set when the invoice is confirmed but waiting for the scheduler to run on the order date.", select=True),
+        
     }
-    def action_cancel_draft(self, cr, uid, ids, *args):
+    def action_wait(self, cr, uid, ids, context=None):
+        context = context or {}
+        for o in self.browse(cr, uid, ids):
+            if not o.order_line:
+                raise osv.except_osv(_('Error!'),_('You cannot confirm a sales order which has no line.'))
+            noprod = self.test_no_product(cr, uid, o, context)
+            if (o.order_policy == 'manual') or noprod:
+                self.write(cr, uid, [o.id], {'state': 'manual', 'date_confirm': fields.date.context_today(self, cr, uid, context=context)})
+            else:
+                self.write(cr, uid, [o.id], {'state': 'procurement', 'date_confirm': fields.date.context_today(self, cr, uid, context=context)})
+            self.pool.get('sale.order.line').button_confirm(cr, uid, [x.id for x in o.order_line])
+        return True
+    
+    def action_progress(self, cr, uid, ids, context=None):
+        context = context or {}
+        for o in self.browse(cr, uid, ids):
+           if not o.order_line:
+               raise osv.except_osv(_('Error!'),_('You cannot confirm a sales order which has no line.'))
+           noprod = self.test_no_product(cr, uid, o, context)
+           if (o.order_policy == 'manual') or noprod:
+               self.write(cr, uid, [o.id], {'state': 'manual', 'date_confirm': fields.date.context_today(self, cr, uid, context=context)})
+           else:
+               self.write(cr, uid, [o.id], {'state': 'progress', 'date_confirm': fields.date.context_today(self, cr, uid, context=context)})
+           self.pool.get('sale.order.line').button_confirm(cr, uid, [x.id for x in o.order_line])
+        return True
+    
+    def action_procurement(self, cr, uid, ids, context= None, *args):
         if not len(ids):
             return False
-        cr.execute('select id from sale_order_line where order_id IN %s and state=%s', (tuple(ids), 'cancel'))
-        line_ids = map(lambda x: x[0], cr.fetchall())
-        self.write(cr, uid, ids, {'state': 'draft', 'invoice_ids': [], 'shipped': 0})
-        self.pool.get('sale.order.line').write(cr, uid, line_ids, {'invoiced': False, 'state': 'draft', 'invoice_lines': [(6, 0, [])]})
-        wf_service = netsvc.LocalService("workflow")
-        for inv_id in ids:
-            wf_service.trg_delete(uid, 'sale.order', inv_id, cr)
-            wf_service.trg_create(uid, 'sale.order', inv_id, cr)
-        return True
+        
+        view_ref = self.pool.get('ir.model.data').get_object_reference(cr, uid, 'procurement', 'procurement_form_view')
+        view_id = view_ref and view_ref[1] or False,
+#        
+        procurement_mov_obj = self.pool.get('procurement.order')
+        sale = self.browse(cr, uid, ids[0], context=context)
+        sale_name = sale.name
+        ids_procurement = procurement_mov_obj.search(cr,uid,[],0, None)
+        ids_selected =[]
+        for line in procurement_mov_obj.browse(cr, uid, ids_procurement):
+            origin = line.origin
+            if origin == sale_name:
+               ids_selected.append(line.id)
+        
+        ids_selected_len = len(ids_selected)
+        if ids_selected_len == 1:
+            return {
+                 'type': 'ir.actions.act_window',
+                 'name': 'Procurement',
+                 'view_mode': 'form',
+                 'view_type': 'form',
+                 'view_id': view_id,
+                 'res_model': 'procurement.order',
+                 'nodestroy': True,
+                 'res_id': ids_selected[0], # assuming the many2one
+                 'target':'new',  # 'current for the current window' 'new for the new window'
+                 'context': context,
+            }
+            
+        elif ids_selected_len > 1:
+            return {
+                 'type': 'ir.actions.act_window',
+                 'name': 'Procurement',
+                 'view_mode': 'tree,form',
+                 'view_type': 'form',
+                 'res_model': 'procurement.order',
+                 'target':'new',
+                 'context': context,
+                 'domain': [('id', 'in', ids_selected)],
+           }
+        else:
+            return False
+    def action_mrp(self, cr, uid, ids, context= None, *args):
+        if not len(ids):
+            return False
+        
+        view_ref = self.pool.get('ir.model.data').get_object_reference(cr, uid, 'mrp', 'mrp_production_form_view')
+        view_id = view_ref and view_ref[1] or False,
+#        
+        mrp_mov_obj = self.pool.get('mrp.production')
+        sale = self.browse(cr, uid, ids[0], context=context)
+        sale_name = sale.name
+        ids_mrp = mrp_mov_obj.search(cr,uid,[],0, None)
+        ids_selected =[]
+        for line in mrp_mov_obj.browse(cr, uid, ids_mrp):
+            origin = line.origin
+            if origin == sale_name:
+               ids_selected.append(line.id)
+        
+        ids_selected_len = len(ids_selected)
+        if ids_selected_len == 1:
+            return {
+                 'type': 'ir.actions.act_window',
+                 'name': 'Mrp',
+                 'view_mode': 'form',
+                 'view_type': 'form',
+                 'view_id': view_id,
+                 'res_model': 'mrp.production',
+                 'nodestroy': True,
+                 'res_id': ids_selected[0], # assuming the many2one
+                 'target':'new',  # 'current for the current window' 'new for the new window'
+                 'context': context,
+            }
+            
+        elif ids_selected_len > 1:
+            return {
+                 'type': 'ir.actions.act_window',
+                 'name': 'Mrp',
+                 'view_mode': 'tree,form',
+                 'view_type': 'form',
+                 'res_model': 'mrp.production',
+                 'target':'new',
+                 'context': context,
+                 'domain': [('id', 'in', ids_selected)],
+           }
+        else:
+            return False
+        
+    def action_purchase(self, cr, uid, ids, context= None, *args):
+        if not len(ids):
+            return False
+        
+        view_ref = self.pool.get('ir.model.data').get_object_reference(cr, uid, 'purchase', 'purchase_order_form')
+        view_id = view_ref and view_ref[1] or False,
+#        
+        purchase_mov_obj = self.pool.get('purchase.order')
+        sale = self.browse(cr, uid, ids[0], context=context)
+        sale_name = sale.name
+        ids_purchase = purchase_mov_obj.search(cr,uid,[],0, None)
+        ids_selected =[]
+        for line in purchase_mov_obj.browse(cr, uid, ids_purchase):
+            origin = line.origin
+            if origin == sale_name:
+               ids_selected.append(line.id)
+        
+        ids_selected_len = len(ids_selected)
+        if ids_selected_len == 1:
+            return {
+                 'type': 'ir.actions.act_window',
+                 'name': 'Purchase',
+                 'view_mode': 'form',
+                 'view_type': 'form',
+                 'view_id': view_id,
+                 'res_model': 'purchase.order',
+                 'nodestroy': True,
+                 'res_id': ids_selected[0], # assuming the many2one
+                 'target':'new',  # 'current for the current window' 'new for the new window'
+                 'context': context,
+            }
+            
+        elif ids_selected_len > 1:
+            return {
+                 'type': 'ir.actions.act_window',
+                 'name': 'Purchase',
+                 'view_mode': 'tree,form',
+                 'view_type': 'form',
+                 'res_model': 'purchase.order',
+                 'target':'new',
+                 'context': context,
+                 'domain': [('id', 'in', ids_selected)],
+           }
+        else:
+            return False
     
     def _prepare_order_line_procurement(self, cr, uid, order, line, move_id, date_planned, date_order, context=None):
         return {

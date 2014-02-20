@@ -38,30 +38,54 @@ class procurement_order(osv.osv):
         return schedule_date    
     
     def check_produce(self, cr, uid, ids, context=None):
-            """ Checks product type.
-            @return: True or False
-            """
-            user = self.pool.get('res.users').browse(cr, uid, uid, context=context)
-            for procurement in self.browse(cr, uid, ids, context=context):
-                product = procurement.product_id
-                # TOFIX: if product type is 'service' but supply_method is 'buy'.
-                if product.supply_method == 'buy':
-                    return False
-                if product.type == 'service':
-                    res = self.check_produce_service(cr, uid, procurement, context)
-                else:
-                    res = self.check_produce_product(cr, uid, procurement, context)
-                if not res:
-                    return False
-            return True
+        """ Checks product type.
+        @return: True or False
+        """
+        
+        sale_mov_obj = self.pool.get('sale.order')                
+        ids_sales = sale_mov_obj.search(cr,uid,[],0, None)
+        
+        user = self.pool.get('res.users').browse(cr, uid, uid, context=context)
+        for procurement in self.browse(cr, uid, ids, context=context):
+            product = procurement.product_id
+            # TOFIX: if product type is 'service' but supply_method is 'buy'.
+            if product.supply_method == 'buy':
+                return False
+            if product.type == 'service':
+                res = self.check_produce_service(cr, uid, procurement, context)
+            else:
+                res = self.check_produce_product(cr, uid, procurement, context)
+            if not res:
+                return False
+            
+            for line in sale_mov_obj.browse(cr, uid, ids_sales):
+                origin = line.name
+                if origin == procurement.origin:
+                    if line.state == 'procurement':
+                        line.write({'state': 'procurement_production'})
+                    else:
+                        line.write({'state': 'procurement_all'})
+                    
+            
+        return True
         
     def check_buy(self, cr, uid, ids, context=None):
             ''' return True if the supply method of the mto product is 'buy'
             '''
+            sale_mov_obj = self.pool.get('sale.order')                
+            ids_sales = sale_mov_obj.search(cr,uid,[],0, None)
+        
             user = self.pool.get('res.users').browse(cr, uid, uid, context=context)
             for procurement in self.browse(cr, uid, ids, context=context):
                 if procurement.product_id.supply_method == 'produce':
                     return False
+            for line in sale_mov_obj.browse(cr, uid, ids_sales):
+                origin = line.name
+                if origin == procurement.origin:
+                    if line.state == 'procurement':
+                        line.write({'state': 'procurement_purchase'})
+                    else:
+                        line.write({'state': 'procurement_all'})
             return True
     def action_revert_done(self, cr, uid, ids, context=None):
         
@@ -72,6 +96,8 @@ class procurement_order(osv.osv):
                 self.write(cr, uid, [reg.id], {'state': 'draft'})
                 return True
         return False
+ 
+        
 procurement_order()
 
 class make_procurement(osv.osv_memory):

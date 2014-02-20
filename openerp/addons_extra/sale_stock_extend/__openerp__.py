@@ -32,7 +32,7 @@
     'license': 'AGPL-3',
     'images': [],
     'depends' : ['sale_stock'],
-    'data': [],
+    'data': ['sale_view.xml'],
     'demo': [],
     'installable': True,
     'application': True,
