@@ -21,19 +21,18 @@
 #
 ##############################################################################
 {
-    'name': 'Sale Draft',
+    'name': 'Sale Stock Extend',
     'version': '1.0',
     'author': 'jmesteve',
     'category': 'Sale Management',    
     'description': """
-        [ENG] Sale order in state Done or Cancel set to Draft.
+        [ENG] Sale procurement extend.
     """,
     'website': 'https://github.com/jmesteve',
     'license': 'AGPL-3',
     'images': [],
-    'depends' : ['sale'],
-    'data': ['sale_view.xml',
-             'security/sale_draft_security.xml'],
+    'depends' : ['sale_stock'],
+    'data': [],
     'demo': [],
     'installable': True,
     'application': True,

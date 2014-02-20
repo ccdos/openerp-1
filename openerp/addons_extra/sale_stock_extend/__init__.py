@@ -20,32 +20,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-{
-    'name': 'Sale Draft',
-    'version': '1.0',
-    'author': 'jmesteve',
-    'category': 'Sale Management',    
-    'description': """
-        [ENG] Sale order in state Done or Cancel set to Draft.
-    """,
-    'website': 'https://github.com/jmesteve',
-    'license': 'AGPL-3',
-    'images': [],
-    'depends' : ['sale'],
-    'data': ['sale_view.xml',
-             'security/sale_draft_security.xml'],
-    'demo': [],
-    'installable': True,
-    'application': True,
-    'auto_install': False,
-}
 
+import sale_stock
 
-
-
-
-
-
-
-
-
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
