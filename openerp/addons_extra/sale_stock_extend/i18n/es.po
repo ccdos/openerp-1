@@ -35,3 +35,24 @@ msgstr "Producción"
 msgid "Purchase"
 msgstr "Compras"
 
+#. module: sale_stock_extend
+#: view:sale.order:0
+msgid "Progress"
+msgstr "Pedido de venta"
+
+#. module: sale_stock_extend
+#: view:sale.order:0
+msgid "Procurement Production"
+msgstr "Producción"
+
+#. module: sale_stock_extend
+#: view:sale.order:0
+msgid "Procurement Purchase"
+msgstr "Pedido de Compras"
+
+#. module: sale_stock_extend
+#: view:sale.order:0
+msgid "Procurement All"
+msgstr "Abastecimiento total"
+
+
