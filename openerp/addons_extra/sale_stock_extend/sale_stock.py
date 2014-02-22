@@ -39,6 +39,7 @@ class sale_order(orm.Model):
             ('procurement_all', 'Procurement All'),
             ('progress', 'Sales Order'),
             ('manual', 'Sale to Invoice'),
+             ('shipping_except', 'Shipping Exception'),
             ('invoice_except', 'Invoice Exception'),
             ('done', 'Done'),
             ], 'Status', readonly=True, track_visibility='onchange',

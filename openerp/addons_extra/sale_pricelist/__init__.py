@@ -21,20 +21,6 @@
 #
 ##############################################################################
 
-{
-    'name': "Partner Sequence Account",
-    'version': '0.1',
-    'category': 'Base',
-    'description': """
-        [ENG] Add automatic partner sequence on ref field depends the partner is provider or customer
-    """,
-    'author': 'jmesteve',
-    'website': 'https://github.com/jmesteve',
-    'license': 'AGPL-3',
-    "depends": ['base'],
-    "data": [
-        'partner_sequence_account.xml',
-    ],
-    "active": False,
-    "installable": True
-}
+import sale
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

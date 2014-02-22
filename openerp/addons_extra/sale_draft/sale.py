@@ -48,7 +48,7 @@ class sale_order_line(orm.Model):
         return {'value': {
             'delay': date,
             }}
-        
+            
     def change_delay(self, cr, uid, ids, date_order, delay, context=None):
         date_order_format = datetime.strptime(date_order, DEFAULT_SERVER_DATE_FORMAT)
         date_planned = date_order_format + relativedelta(days=delay or 0.0)

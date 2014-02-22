@@ -20,8 +20,32 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+{
+    'name': 'Sale Price List Extend',
+    'version': '1.0',
+    'author': 'jmesteve',
+    'category': 'Sale Management',    
+    'description': """
+        [ENG] Sale Price List Extend.
+    """,
+    'website': 'https://github.com/jmesteve',
+    'license': 'AGPL-3',
+    'images': [],
+    'depends' : ['sale','product'],
+    'data': ['sale_view.xml',
+             ],
+    'demo': [],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+}
 
-import product_customer_code
-import product
-import sale_extend
-import stock_extend
+
+
+
+
+
+
+
+
+
