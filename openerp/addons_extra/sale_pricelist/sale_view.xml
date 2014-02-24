@@ -18,7 +18,7 @@
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='price_unit']" position="attributes">                
-                     <attribute name="on_change">change_price_unit(price_unit, product_id, parent.id, parent.pricelist_id,context)</attribute>
+                     <attribute name="on_change">change_price_unit(price_unit, product_id, parent.id, parent.pricelist_id,parent.date_order,context)</attribute>
                 </xpath> 
             </field>
         </record>

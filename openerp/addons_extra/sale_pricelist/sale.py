@@ -23,6 +23,11 @@
 
 from openerp.osv import fields, osv, orm
 import openerp.addons.decimal_precision as dp
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+import time
+from openerp.tools import  DEFAULT_SERVER_DATETIME_FORMAT
+
 
 
 class sale_order_line(orm.Model):
@@ -47,16 +52,20 @@ class sale_order_line(orm.Model):
         else:
             return []
          
-    def change_price_unit(self, cr, uid, ids,price_unit, product, order_id, pricelist_id, context=None):
+    def change_price_unit(self, cr, uid, ids,price_unit, product, order_id, pricelist_id,date_order, context=None):
         if product == False:
             return False
         if pricelist_id == False:
+            return False
+        if date_order == False:
             return False
         
         product_mov_obj = self.pool.get('product.template').browse(cr, uid, product)
         categ_id = product_mov_obj.categ_id.id
         categ_ids = [categ_id] + self.category_parent_recursive(cr, uid,categ_id)
+        date_order = datetime.strptime(date_order, '%Y-%m-%d')
         
+        price_list_version = 0
         price_list_item_mov_obj = self.pool.get('product.pricelist.item')
         ids_price_list_item = price_list_item_mov_obj.search(cr,uid,[],0, None)
         price_list_item = []
@@ -66,40 +75,73 @@ class sale_order_line(orm.Model):
                 line_product_id = line.product_id.id
                 line_categ_id = line.categ_id.id
                 if line_pricelist_id == pricelist_id:
-                    if line_product_id == product or line_categ_id in categ_ids:
-                        price_list_item.append(line)
+                    if (line_product_id and line_product_id == product) or line_categ_id in categ_ids:
+                        line_version_date_start = line.price_version_id.date_start
+                        if line_version_date_start:
+                            line_version_date_start = datetime.strptime(line_version_date_start, '%Y-%m-%d')
+                        line_version_date_end = line.price_version_id.date_end
+                        if line_version_date_end:
+                            line_version_date_end = datetime.strptime(line_version_date_end, '%Y-%m-%d')
+                        if (line_version_date_start and (date_order < line_version_date_start)) or (line_version_date_end and (date_order > line_version_date_end)):
+                            pass
+                        else:
+                            price_list_item.append(line)
             except:
                 print "error: line.price_version_id.pricelist_id"
             
         if len(price_list_item)==0:
             price_list_version_mov_obj = self.pool.get('product.pricelist.version')
             ids_price_list_version = price_list_version_mov_obj.search(cr,uid,[],0, None)
-            price_list_version = 0
             for line in price_list_version_mov_obj.browse(cr, uid, ids_price_list_version):
                 if line.pricelist_id.id == pricelist_id:
-                    price_list_version = line.id
-                    price_surcharge = price_unit - product_mov_obj.list_price
-                    price_list_item_mov_obj.create(cr, uid, {
-                                'base':1,
-                                'price_version_id':price_list_version,
-                                'price':price_unit,
-                                'product_id': product,
-                                'categ_id': '',
-                                'price_min_margin':0.000,
-                                'price_max_margin':0.000,
-                                'price_round': 0.000,
-                                'price_surcharge':price_surcharge,
-                                 },context)
-            
-                    return False
+                    line_version_date_start = line.date_start
+                    if line_version_date_start:
+                        line_version_date_start = datetime.strptime(line_version_date_start, '%Y-%m-%d')
+                    line_version_date_end = line.date_end
+                    if line_version_date_end:
+                        line_version_date_end = datetime.strptime(line_version_date_end, '%Y-%m-%d')
+                    if (line_version_date_start and (date_order < line_version_date_start)) or (line_version_date_end and (date_order > line_version_date_end)):
+                            pass
+                    else:
+                        price_list_version = line.id
+                        price_surcharge = price_unit - product_mov_obj.list_price
+                        price_list_item_mov_obj.create(cr, uid, {
+                                    'base':1,
+                                    'price_version_id':price_list_version,
+                                    'price':price_unit,
+                                    'product_id': product,
+                                    'categ_id': '',
+                                    'price_min_margin':0.000,
+                                    'price_max_margin':0.000,
+                                    'price_round': 0.000,
+                                    'price_surcharge':price_surcharge,
+                                     },context)
+                        return False
                 
         return True
     
 class product_pricelist_item(osv.osv):
     _inherit = "product.pricelist.item"
     _columns = {
-    'price': fields.float('Price',
+        'price': fields.float('Price',
             digits_compute= dp.get_precision('Product Price'), help='Specify the price.'),    
     }
     
 product_pricelist_item()
+
+class product_pricelist_version(osv.osv):
+    _inherit = "product.pricelist.version"
+    def _default_name(self, cr, uid, context=None):
+        today = time.strftime(DEFAULT_SERVER_DATETIME_FORMAT)
+        return 'version ' + today
+    
+    def _default_date_start(self, cr, uid, context=None):
+        today = time.strftime(DEFAULT_SERVER_DATETIME_FORMAT)
+        return today
+
+    _defaults = {
+        'name': _default_name,
+        'date_start': _default_date_start
+    }
+    
+    
