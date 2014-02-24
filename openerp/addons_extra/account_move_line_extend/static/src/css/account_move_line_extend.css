@@ -2,3 +2,8 @@
     padding: 2px;
     content: "i";
 }
+
+.width240px{
+	max-width:240px !important;
+	
+}

@@ -2,11 +2,17 @@ from openerp.osv import fields, osv, orm
 from openerp import pooler
 from openerp.tools.translate import _
 
-
 class account_move_line(osv.osv):
     _inherit = "account.move.line"
-    #accumulated_global = 0
-    #accumulateds = {}
+    data_search = {
+                   'offset': '0',
+                   'limit': '0',
+                   'count': False,
+                   'order': None,
+                   'context': None,
+                   'args':None,
+                   }
+    data_ids = None
     
     def _update_check(self, cr, uid, ids, context=None):
         done = {}
@@ -22,13 +28,27 @@ class account_move_line(osv.osv):
                 done[t] = True
         return True
         
-    def _get_accumulated(self, cr, uid, ids,name, unknow_none, context=None):
+    def _get_accumulated(self, cr, uid, ids, name, unknow_none, context=None):
         res = dict.fromkeys(ids, False)
-        #accumulated = self.accumulated_global
-        lines = self.browse(cr, uid, ids, context=context)
-        #line0 = lines[0]
-        #self.accumulateds[line0.id] = [line0.debit-line0.credit,line0.date]
+        
+        data_search = self.data_search
+        args = self.data_search.get('args')
+        offset = 0
+        limit = self.data_search.get('offset')
         accumulated = 0
+        if limit > 0:
+            order = self.data_search.get('order')
+            context = self.data_search.get('context')
+            count = self.data_search.get('count')
+            obj_move_line = self.pool.get('account.move.line')
+            ids_move_line = obj_move_line.search(cr, uid, args, offset, limit, order, context, count)
+            obj_move_line = obj_move_line.browse(cr, uid, ids_move_line, context=context)
+            for line in obj_move_line:
+                debit = line.debit
+                credit = line.credit
+                accumulated += debit - credit
+        
+        lines = self.browse(cr, uid, ids, context=context)
         for line in lines:
             debit = line.debit
             credit = line.credit
@@ -52,9 +72,20 @@ class account_move_line(osv.osv):
     _order = "date, id"
     
     def search(self, cr, uid, args, offset=0, limit=None, order=None, context=None, count=False):
-        limit = 500
-        return super(account_move_line, self).search(cr, uid, args, offset, limit, order, context, count)
-    
+        result = super(account_move_line, self).search(cr, uid, args, offset, limit, order, context, count)
+        if isinstance(result,list):
+            self.data_search = {
+                   'offset': offset,
+                   'limit': limit,
+                   'count': count,
+                   'order': order,
+                   'context': context,
+                   'args':args,
+                   }
+            #self.data_ids = super(account_move_line, self).search(cr, uid, args, 0, offset, order, context, count)
+        return result
+        
+        
     def list_accounts(self, cr, uid, context=None):
         ids = self.pool.get('account.account').search(cr,uid,[],0, None,('code'))
         lines = self.pool.get('account.account').browse(cr, uid, ids, context)
@@ -71,7 +102,5 @@ class account_move_line(osv.osv):
         #win_obj = self.pool.get('ir.actions.act_window')
         #res = win_obj.for_xml_id(cr, uid, 'account', 'account_report_general_ledger_view', context)
         #return res
-        
-
     
 account_move_line()

@@ -111,7 +111,7 @@ openerp.account.quickadd = function (instance) {
                 
                 self.$el.parent().find('.oe_account_select_journal').children().remove().end();
                 self.$el.parent().find('.oe_account_select_journal').append(new Option('', ''));
-                console.log(self.current_journal);
+                //console.log(self.current_journal);
                 for (var i = 0;i < self.journals.length;i++){
                     o = new Option(self.journals[i][1], self.journals[i][0]);
                     if (self.journals[i][0] === self.current_journal){
