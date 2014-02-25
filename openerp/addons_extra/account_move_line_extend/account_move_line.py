@@ -104,3 +104,16 @@ class account_move_line(osv.osv):
         #return res
     
 account_move_line()
+
+class account_move(osv.osv):
+    _inherit = "account.move"
+    
+    def action_remove_move(self, cr, uid, ids, context=None):
+        try:
+            self.pool.get('account.move').unlink(cr, uid, ids, context)
+        except:
+            raise osv.except_osv(_('Error!'), _('You cannot do this modification on a confirmed entry. You can just change some non legal fields or you must unconfirm the journal entry first.\n.'))
+        return { 'type' :  'ir.actions.client',
+                  'tag': 'reload' }
+ 
+

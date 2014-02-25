@@ -13,5 +13,15 @@
 		                </xpath>
 					</field>
 		</record>
+		<record id="view_move_form_extend" model="ir.ui.view">
+		            <field name="name">account.move.form</field>
+		            <field name="model">account.move</field>
+		            <field name="inherit_id" ref="account.view_move_form" />
+		            <field name="arch" type="xml">
+		            	<xpath expr="//button[@name='button_cancel']" position="after"> 
+		            	    <button name="action_remove_move" states="draft,cancel" icon="gtk-cancel" string="Remove Move" type="object"/>
+		                </xpath>
+					</field>
+		</record>
 	</data>
 </openerp>

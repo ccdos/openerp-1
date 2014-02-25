@@ -40,3 +40,12 @@ msgstr "notas"
 msgid "Total Balance"
 msgstr "Total Saldo"
 
+#. module: account_move_line_extend
+#: view:account.move:0
+msgid "Remove Move"
+msgstr "Eliminar Asiento"
+
+#. module: account_move_line_extend
+#: code:addons/account_move_line_extend/static/src/xml/account_move_line_extend.xml:20
+msgid "Account :"
+msgstr "Cuenta Contable:"

@@ -6,14 +6,34 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-24 18:42+0000\n"
-"PO-Revision-Date: 2014-01-24 18:42+0000\n"
+"POT-Creation-Date: 2014-02-25 11:25+0000\n"
+"PO-Revision-Date: 2014-02-25 11:25+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: account_move_line_extend
+#: model:ir.model,name:account_move_line_extend.model_account_move
+msgid "Account Entry"
+msgstr "Account Entry"
+
+#. module: account_move_line_extend
+#: field:account.move.line,notes:0
+msgid "notes"
+msgstr "notes"
+
+#. module: account_move_line_extend
+#: view:account.move.line:0
+msgid "Total Balance"
+msgstr "Total Balance"
+
+#. module: account_move_line_extend
+#: view:account.move:0
+msgid "Remove Move"
+msgstr "Remove Move"
 
 #. module: account_move_line_extend
 #: model:ir.model,name:account_move_line_extend.model_account_move_line
@@ -24,3 +44,4 @@ msgstr "Journal Items"
 #: field:account.move.line,accumulated:0
 msgid "accumulated"
 msgstr "accumulated"
+
