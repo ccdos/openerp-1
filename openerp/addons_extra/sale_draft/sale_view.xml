@@ -7,6 +7,9 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
+            	<button name="cancel" position="before">
+                    <button name="action_cancel_draft" states="cancel,done" icon="gtk-cancel" string="Reopen" type="object" groups="base.group_sale_draft"/>
+                </button>
                 <xpath expr="//button[@string='Invoice']" position="after">
                     <button name="action_recalculate"  icon="gtk-refresh" string="Recalculate" type="object" groups="base.group_sale_draft"/>  	
                 </xpath>

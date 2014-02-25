@@ -29,11 +29,28 @@ from dateutil.relativedelta import relativedelta
 import time
 from openerp.tools import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT, DATETIME_FORMATS_MAP, float_compare
 
+class sale_order(orm.Model):
+    _inherit = "sale.order"
+    
+    def action_cancel_draft(self, cr, uid, ids, *args):
+        if not len(ids):
+            return False
+        cr.execute('select id from sale_order_line where order_id IN %s and state=%s', (tuple(ids), 'cancel'))
+        line_ids = map(lambda x: x[0], cr.fetchall())
+        self.write(cr, uid, ids, {'state': 'draft', 'invoice_ids': [], 'shipped': 0})
+        self.pool.get('sale.order.line').write(cr, uid, line_ids, {'invoiced': False, 'state': 'draft', 'invoice_lines': [(6, 0, [])]})
+        wf_service = netsvc.LocalService("workflow")
+        for inv_id in ids:
+            wf_service.trg_delete(uid, 'sale.order', inv_id, cr)
+            wf_service.trg_create(uid, 'sale.order', inv_id, cr)
+        return True
+    
 class sale_order_line(orm.Model):
     _inherit = "sale.order.line"  
     _columns = {
             'date_delay': fields.date('Date Delay', required=True, readonly=False),
             }
+    
     def change_date_delay(self, cr, uid, ids,date_delay, date_order, context=None):
         date_delay_format = datetime.strptime(date_delay, DEFAULT_SERVER_DATE_FORMAT)
         date_order_format = datetime.strptime(date_order, DEFAULT_SERVER_DATE_FORMAT)
