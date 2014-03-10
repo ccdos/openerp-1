@@ -31,8 +31,8 @@ import os
 import subprocess
 import tempfile
 import time
-import pooler
-import tools
+import openerp.pooler as pooler
+import openerp.tools as tools
 import logging
 
 

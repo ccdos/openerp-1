@@ -19,7 +19,7 @@
 #
 ##############################################################################
 
-from osv import osv
+from openerp.osv import osv
 
 
 class AccountTrialBalanceWizard(osv.osv_memory):

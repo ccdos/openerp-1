@@ -20,7 +20,7 @@
 ##############################################################################
 
 from collections import defaultdict
-from report import report_sxw
+from openerp.report import report_sxw
 from datetime import datetime
 from itertools import groupby
 from operator import itemgetter
