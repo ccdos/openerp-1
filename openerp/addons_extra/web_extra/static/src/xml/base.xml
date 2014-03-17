@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates id="template" xml:space="preserve">
+	<t t-extend="WebClient">
+		<t t-jquery=".oe_footer" t-operation="replace">
+	       <div class="oe_footer">
+	           Powered by <a href="http://www.erpandcloud.com" target="_blank"><span>ErpAndCloud</span></a>
+	       </div>
+	    </t>
+	</t>
+
+	<t t-extend="UserMenu">    
+	    <t t-jquery=".oe_dropdown_menu" t-operation="replace">
+	       <ul t-if="widget.session.uid !== 1" class="oe_dropdown_menu">
+                <li><a href="#" data-menu="settings">Preferences</a></li>
+                <li><a href="#" data-menu="logout">Log out</a></li>
+           </ul>
+           <ul t-if="widget.session.uid === 1" class="oe_dropdown_menu">
+                <li><a href="#" data-menu="settings">Preferences</a></li>
+                <li><a href="#" data-menu="account">My OpenERP.com account</a></li>
+                <li><a href="#" data-menu="about">About OpenERP</a></li>
+                <li><a href="#" data-menu="help">Help</a></li>
+                <li><a href="#" data-menu="logout">Log out</a></li>
+            </ul>
+	    </t>
+	</t>
+
+</templates>

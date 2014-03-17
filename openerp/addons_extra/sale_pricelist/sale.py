@@ -59,9 +59,9 @@ class sale_order_line(orm.Model):
             return False
         if date_order == False:
             return False
-        
-        product_mov_obj = self.pool.get('product.template').browse(cr, uid, product)
-        categ_id = product_mov_obj.categ_id.id
+        product_obj = self.pool.get('product.product').browse(cr, uid, product)
+        product_obj_template = product_obj.product_tmpl_id
+        categ_id = product_obj_template.categ_id.id
         categ_ids = [categ_id] + self.category_parent_recursive(cr, uid,categ_id)
         date_order = datetime.strptime(date_order, '%Y-%m-%d')
         
@@ -74,6 +74,8 @@ class sale_order_line(orm.Model):
                 line_pricelist_id = line.price_version_id.pricelist_id.id 
                 line_product_id = line.product_id.id
                 line_categ_id = line.categ_id.id
+                if line_categ_id == False:
+                    line_categ_id = 1
                 if line_pricelist_id == pricelist_id:
                     if (line_product_id and line_product_id == product) or line_categ_id in categ_ids:
                         line_version_date_start = line.price_version_id.date_start
@@ -103,8 +105,9 @@ class sale_order_line(orm.Model):
                     if (line_version_date_start and (date_order < line_version_date_start)) or (line_version_date_end and (date_order > line_version_date_end)):
                             pass
                     else:
+                        
                         price_list_version = line.id
-                        price_surcharge = price_unit - product_mov_obj.list_price
+                        price_surcharge = price_unit - product_obj_template.list_price
                         price_list_item_mov_obj.create(cr, uid, {
                                     'base':1,
                                     'price_version_id':price_list_version,
@@ -120,12 +123,43 @@ class sale_order_line(orm.Model):
                 
         return True
     
+    
 class product_pricelist_item(osv.osv):
     _inherit = "product.pricelist.item"
     _columns = {
         'price': fields.float('Price',
             digits_compute= dp.get_precision('Product Price'), help='Specify the price.'),    
     }
+    
+    def change_price(self, cr, uid, ids, price, product, categ_id, base, context=None):
+        if product == False:
+            return False
+        if base == 1:
+            product_obj = self.pool.get('product.product').browse(cr, uid, product)
+            product_obj_template = product_obj.product_tmpl_id
+            price_surcharge = price - product_obj_template.list_price
+            return {
+                    'value':{
+                             'price_surcharge': price_surcharge
+                             }
+                    }
+        elif base == 2:
+            product_obj = self.pool.get('product.product').browse(cr, uid, product)
+            product_obj_template = product_obj.product_tmpl_id
+            price_surcharge = price - product_obj_template.standard_price
+            return {
+                    'value':{
+                             'price_surcharge': price_surcharge
+                             }
+                    }
+        else:
+            return {
+                    'value':{
+                             'price_surcharge': 0.00,
+                             'price': '',
+                             }
+                    }
+            
     
 product_pricelist_item()
 
@@ -143,5 +177,7 @@ class product_pricelist_version(osv.osv):
         'name': _default_name,
         'date_start': _default_date_start
     }
+    
+    
     
     
