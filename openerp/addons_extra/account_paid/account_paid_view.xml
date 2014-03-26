@@ -1,12 +1,6 @@
 <?xml version="1.0"?>
 <openerp>
     <data>
-       <record id="t10" model="workflow.transition">
-            <field name="act_from" ref="account.act_open"/>
-            <field name="act_to" ref="account.act_paid"/>
-            <field name="signal">invoice_paid</field>
-        </record>
-        
         
         <record id="invoice_form_paid_inherit" model="ir.ui.view">
             <field name="name">invoice.form.paid.inherit</field>
@@ -14,7 +8,7 @@
             <field name="inherit_id" ref="account.invoice_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//button[@name='invoice_cancel']" position="after">
-                    <button name="invoice_paid" states="open" string="Paid Invoice" groups="account.group_account_invoice" confirm="Are you sure you want to paid this invoice?"/>
+                    <button name="action_invoice_paid" states="open" string="Paid Invoice"  type="object" groups="account.group_account_invoice" confirm="Are you sure you want to paid this invoice?"/>
                 </xpath>
             </field>
         </record>
@@ -25,7 +19,7 @@
             <field name="inherit_id" ref="account.invoice_supplier_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//button[@name='invoice_cancel']" position="after">
-                    <button name="invoice_paid" states="open" string="Paid Invoice" groups="account.group_account_invoice" confirm="Are you sure you want to paid this invoice?"/>
+                    <button name="action_invoice_paid" states="open" string="Paid Invoice" type="object" groups="account.group_account_invoice" confirm="Are you sure you want to paid this invoice?"/>
                 </xpath>
             </field>
         </record>
